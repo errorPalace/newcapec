@@ -1,0 +1,77 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ehcache.xsd">
+	<diskStore path="java.io.tmpdir" />
+	
+	<defaultCache maxElementsInMemory="10000" eternal="false"
+		timeToIdleSeconds="120" timeToLiveSeconds="120" overflowToDisk="true"
+		diskSpoolBufferSizeMB="30" maxElementsOnDisk="10000000"
+		diskPersistent="false" diskExpiryThreadIntervalSeconds="120"
+		memoryStoreEvictionPolicy="LRU" />
+	<cache name="noticeCache"
+           maxElementsInMemory="10000"
+           maxElementsOnDisk="1000"
+           eternal="true"
+           overflowToDisk="true"
+           diskSpoolBufferSizeMB="2000"
+           timeToIdleSeconds="0"
+           timeToLiveSeconds="0"
+           memoryStoreEvictionPolicy="LFU"/>
+
+	<cache name="kekCache"
+           maxElementsInMemory="10000"
+           maxElementsOnDisk="1000"
+           eternal="true"
+           overflowToDisk="true"
+           diskSpoolBufferSizeMB="2000"
+           timeToIdleSeconds="0"
+           timeToLiveSeconds="0"
+           memoryStoreEvictionPolicy="LFU"/>
+   
+	<cache name="schannelServerCache"
+           maxElementsInMemory="10000"
+           maxElementsOnDisk="1000"
+           eternal="true"
+           overflowToDisk="true"
+           diskSpoolBufferSizeMB="2000"
+           timeToIdleSeconds="0"
+           timeToLiveSeconds="0"
+           memoryStoreEvictionPolicy="LFU"/>
+           
+	<cache name="schannelClientCache"
+           maxElementsInMemory="10000"
+           maxElementsOnDisk="1000"
+           eternal="true"
+           overflowToDisk="true"
+           diskSpoolBufferSizeMB="2000"
+           timeToIdleSeconds="0"
+           timeToLiveSeconds="0"
+           memoryStoreEvictionPolicy="LFU"/>
+           
+	<cache name="syncSessionCache"
+           maxElementsInMemory="10000"
+           maxElementsOnDisk="1000"
+           eternal="true"
+           overflowToDisk="true"
+           diskSpoolBufferSizeMB="2000"
+           timeToIdleSeconds="0"
+           timeToLiveSeconds="0"
+           memoryStoreEvictionPolicy="LFU"/>
+    <cache name="personCache"
+           maxElementsInMemory="10000"
+           maxElementsOnDisk="0"
+           eternal="true"
+           overflowToDisk="true"
+           diskSpoolBufferSizeMB="2000"
+           timeToIdleSeconds="0"
+           timeToLiveSeconds="0"
+           memoryStoreEvictionPolicy="LFU"/>
+           
+     <cache name="oauthCache" 
+     		eternal="false"
+     		maxElementsInMemory="100000"
+			timeToIdleSeconds="3600"
+			timeToLiveSeconds="3600" 
+			overflowToDisk="true"
+			maxElementsOnDisk="0"
+			statistics="true" />
+	
+</ehcache>

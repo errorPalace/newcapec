@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration sacn="true" scanPeriod="120" debug="false">
+<!-- <configuration> -->
+	<contextName>H5-SERVICE</contextName>    
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+		 	<!-- 项目开发时使用，提高开发效率 -->
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36}%line - %msg %n</pattern>
+		</layout>
+	</appender>
+	
+	<logger name="ch.qos.logback" level="INFO"/>
+	<logger name="org.springframework" level="INFO"/>
+	<logger name="net.sf.ehcache" level="INFO"/>
+	<logger name="org.apache" level="INFO"/>
+	<logger name="org.quartz" level="INFO"/>
+	<logger name="org.hibernate" level="INFO"/>
+	<logger name="freemarker" level="INFO"/>
+	<logger name="net.newcapec.v3.common" level="INFO"/>
+	<logger name="net.newcapec.v3.core" level="INFO"/>
+	<logger name="net.newcapec.v3.security" level="INFO"/>
+	<logger name="net.newcapec.v3.springsecurity" level="INFO"/>
+	<root level="DEBUG">
+		<appender-ref ref="stdout"/>
+	</root>
+</configuration>

@@ -1,0 +1,206 @@
+<script type="text/template7" id="baseTemplate">
+     <ul class="menu-items">
+              <li class="card-item">
+                    <a href="tpl/recharge.html">
+                        <div class="menu-nav recharge menu-animation">
+                            <p>充值</p>
+                            <p class="p-text">方便快捷</p>
+                        </div>
+                    </a>
+              </li>  
+             <li class="card-item">
+                    <a href="tpl/tradeDetail.html">
+                        <div class="menu-nav trade menu-animation">
+                            <p>交易明细</p>
+                            <p class="p-text">本月交易记录</p>
+                        </div>
+                    </a>
+              </li>
+              <li class="card-item">
+                    <a href="tpl/modifyPassword.html">
+                        <div class="menu-nav modifyPassword menu-animation">
+                            <p>修改密码</p>
+                            <p class="p-text">修改查询密码</p>
+                        </div>
+                    </a>
+              </li>
+              <li class="card-item">
+                    <a href="tpl/lostCard.html">
+                        <div class="menu-nav lostCard menu-animation">
+                            <p>卡挂失</p>
+                            <p class="p-text">一键挂失</p>
+                        </div>
+                    </a>
+              </li>
+              <li class="card-item">
+                    <a href="tpl/lostCheckIn.html">
+                        <div class="menu-nav lostCheckIn menu-animation">
+                            <p>捡卡登记</p>
+                            <p class="p-text">做好事攒人品</p>
+                        </div>
+                    </a>
+              </li>
+              <li class="card-item">
+                    <a href="tpl/faq.html">
+                        <div class="menu-nav faq menu-animation">
+                            <p>常见问题</p>
+                            <p class="p-text">有问题看这里</p>
+                        </div>
+                    </a>
+              </li>
+        </ul> 
+    
+</script>
+<script type="text/template7" id="tradeListTemplate">
+
+    {{#if isFirstLoad}}
+    <li class="list-group-title border1">{{month}}月
+        <span class="item-subtext "></span>
+    </li>
+    {{/if}}
+    {{#each items}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title-row">
+                <div class="item-title">{{description}}({{termName}})</div>
+                <div class="item-after">
+                    {{#if flag}}
+                    <span class="badge-price">-{{currency opfare}}</span>
+                    {{else}}
+                    <span class="badge-price green">+{{currency opfare}}</span>
+                    {{/if}}
+
+                </div>
+            </div>
+            <div class="item-subtitle min-text">{{opdt}}
+                <span class="item-subtext orange"></span>
+            </div>
+        </div>
+    </li>
+    {{/each}}
+
+</script>
+<script type="text/template7" id="recordListTemplate">
+
+    {{#if isFirstLoad}}
+    <li class="list-group-title border1">{{month}}月
+        <span class="item-subtext "></span>
+    </li>
+    {{/if}}
+    {{#each items}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title-row">
+                <div class="item-title">{{address}}</div>
+                <div class="item-after">
+
+
+                </div>
+            </div>
+            <div class="item-subtitle min-text">{{opdt}}
+                <span class="item-subtext orange"></span>
+            </div>
+        </div>
+    </li>
+    {{/each}}
+
+</script>
+<!-- 圈存列表-->
+<script type="text/template7" id="queryListTemplate">
+    {{#js_compare "this.length <= 0"}}
+        <div class="content-block">
+            <div class="content-block-inner">暂时还没有记录</div>
+        </div>
+    {{else}}
+        {{#each this}}
+        <ul>
+            <li class="list-group-title border1">{{month}}月
+                <span class="item-subtext">共{{js "this.items.length"}} 笔</span>
+            </li>
+            {{#each items}}
+            <li class="item-content">
+                <div class="item-inner">
+                    <div class="item-title-row">
+                        <div class="item-title">{{description}}
+                            {{js "this.status == 1?'<i class=\"warning\"></i>':''"}}
+                        </div>
+                        <div class="item-after">
+                            <span class="badge-price">{{currency opfare}}</span>
+                        </div>
+                    </div>
+                    <div class="item-subtitle min-text">{{opdt}}
+                                            <span class="item-subtext orange">
+                                                {{js "this.status == 1?'未领':''"}}
+                                            </span>
+                    </div>
+                </div>
+            </li>
+            {{/each}}
+        </ul>
+        {{/each}}
+
+    {{/js_compare}}
+
+</script>
+<script  type="text/template7" id="tradeOptionTemplate">
+    <div class="popover popover-links tradeOption">
+        <div class="popover-angle"></div>
+        <div class="popover-inner">
+            <div class="list-block">
+                <ul>
+                    {{#each this}}
+                    <li data-begindate="{{beginDate}}" data-enddate="{{endDate}}" data-month="{{month}}"><a href="#" class="list-button item-link" >{{text}}</a></li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/template7" id="faqListTemplate">
+    <ul>
+        {{#each this}}
+        <li class="accordion-item">
+
+            <a href="#" class="item-content
+              {{#if this.items}}item-link{{/if}}"  data-faq="{{this.description}}" data-title="{{this.title}}">
+                <div class="item-inner">
+                    <div class="item-title"><i class="icon icon-question"></i>{{title}}</div>
+                </div>
+            </a>
+
+            {{#if items}}
+            <div class="accordion-item-content">
+                <div class="list-block">
+                    <ul>
+                        {{#each items}}
+                        <li class="item-content ">
+                            <a href="#" class="item-content" data-faq="{{description}}" data-title="{{title}}">
+                                <div class="item-inner">
+                                    <div class="item-title">{{title}}</div>
+                                </div>
+                            </a>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+            {{/if}}
+
+        </li>
+        {{/each}}
+    </ul>
+</script>
+<script type="text/template7" id="menuTemplate">
+    <div class="popover menu-popover">
+        <div class="popover-angle"></div>
+        <div class="popover-inner">
+          <div class="list-block">
+            <ul>
+             {{#each this}}
+              <li><a href="#" class="list-button item-link">{{text}}</a></li>
+              {{/each}}
+            </ul>
+          </div>
+        </div>
+  </div>
+</script>

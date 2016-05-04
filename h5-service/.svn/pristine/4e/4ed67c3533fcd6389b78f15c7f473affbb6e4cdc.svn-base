@@ -1,0 +1,12 @@
+-- CREATE DATABASE IF NOT EXISTS CAMPUS_QUICKACCESS DEFAULT CHARSET UTF8 COLLATE UTF8_GENERAL_CI;
+
+-- 创建学校表
+drop table if exists IPADDR_LOG_;
+
+    create table IPADDR_LOG_ (
+        ID_ bigint not null,
+        CREATEDATE_ datetime,
+        IPADDR_ varchar(200),
+        primary key (ID_)
+    );
+    

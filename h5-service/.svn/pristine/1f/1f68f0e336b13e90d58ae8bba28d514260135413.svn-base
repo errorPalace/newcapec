@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<v3>
+<name>${project.artifactId}</name>
+<title>${project.name}</title>
+<version>${project.version}</version>
+<level>604</level>
+
+<built.by>${user.name}</built.by>
+<built.jdk>${java.version}</built.jdk>
+<built.runtime>${java.runtime.name} ${java.runtime.version}</built.runtime>
+<built.vm>${java.vm.name} ${java.vm.version}</built.vm>
+<built.os>${os.name} ${os.version}</built.os>
+<built.pc>${env.COMPUTERNAME}</built.pc>
+<built.time>${v3.build.timestamp}</built.time>
+</v3>

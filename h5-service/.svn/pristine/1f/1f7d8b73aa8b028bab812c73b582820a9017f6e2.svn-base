@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true"  debug="false" scanPeriod="120">
+	<appender name="logfile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>/mnt/tomcat-log/h5-service.log</File>
+		<encoder>
+			<pattern>%d %p [%c] - %m%n</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<maxHistory>60</maxHistory>
+			<FileNamePattern>/mnt/tomcat-log/h5-service.%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<MaxFileSize>250MB</MaxFileSize>
+		 	</timeBasedFileNamingAndTriggeringPolicy>
+		 </rollingPolicy>
+	</appender>
+	<logger name="ch.qos.logback" level="WARN"/>
+	<logger name="org.springframework" level="INFO"/>
+	<logger name="net.sf.ehcache" level="INFO"/>
+	<logger name="org.apache" level="INFO"/>
+	<logger name="org.quartz" level="INFO"/>
+	<logger name="org.hibernate" level="WARN"/>
+	<logger name="freemarker" level="INFO"/>
+	<logger name="net.newcapec.v3.common" level="INFO"/>
+	<logger name="net.newcapec.v3.core" level="INFO"/>
+	<logger name="net.newcapec.v3.security" level="INFO"/>
+	<logger name="net.newcapec.v3.springsecurity" level="INFO"/>
+	<root level="INFO">
+		<appender-ref ref="logfile"/>
+	</root>
+</configuration>

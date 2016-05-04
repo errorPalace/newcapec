@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="src/css_android/framework7.ios.css"/>
+    <link rel="stylesheet" href="src/css_android/framework7.ios.colors.min.css"/>
+    <link rel="stylesheet" href="src/css/main.css"/>
+    <title>校园卡</title>
+    <style type="text/css" rel="stylesheet">
+    </style>
+</head>
+<body>
+<!-- Status bar overlay for full screen mode (PhoneGap) -->
+<div class="statusbar-overlay"></div>
+<!-- Views -->
+<div class="views">
+    <div class="view view-main">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="left">
+                    <a href="#" class="link">
+                        <i class="icon icon-back"></i>
+                    </a>
+                </div>
+                <div class="center">校园卡</div>
+                <div class="right">
+                    <a href="#" class="link">
+                        <i class="icon icon-bars"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="pages navbar-through">
+            <div class="page" data-page="home">
+                <div class="page-content">
+                    <div class="xyk-header">
+                        <div class="xyk-title">校园卡余额(元)</div>
+                        <div class="xyk-info">156.83</div>
+                        <div class="xyk-link">
+                            <a href="">有<span>120</span>元未领取</a>|
+                            <a href="">快速充值</a>
+                        </div>
+                        <div class="xyk-remark">
+                            （以上数字由于网络原因可能存在延迟）
+                        </div>
+                    </div>
+
+                    <div class="xyk-menus">
+                        <ul class="xyk-items">
+                            <li class="card-item">
+                                <a href="src/tpl/tradeDetail.html">
+                                    <img src="src/image/jymx.png" alt=""/>
+                                    <div>
+                                        <p>交易明细</p>
+                                        <p>本月共3笔交易</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="card-item">
+                                <a href="src/tpl/lostCard.html">
+                                    <div>
+                                        <p>卡片挂失</p>
+                                        <p>一键挂失</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="card-item">
+                                <a href="src/tpl/lostCheckIn.html">
+                                    <div>
+                                        <p>捡卡登记</p>
+                                        <p>拾金不昧好品质</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="card-item">
+                                <a href="">
+                                    <div>
+                                        <p>修改查询密码</p>
+                                        <p>查询更安全</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="card-item">
+                                <a href="">
+                                    <div>
+                                        <p>考勤记录</p>
+                                        <p>2015.08.11迟到</p>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript" src="src/libs_android/framework7.js"></script>
+<script type="text/javascript" src="src/script/init.js"></script>
+</body>
+</html>

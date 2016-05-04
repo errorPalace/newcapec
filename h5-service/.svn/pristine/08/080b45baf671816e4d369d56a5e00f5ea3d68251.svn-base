@@ -1,0 +1,24 @@
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="left">
+            <a href="#" class="back link">
+                <i class="icon icon-back"></i>
+            </a>
+        </div>
+        <div class="center">领款查询</div>
+    </div>
+</div>
+</div>
+<div class="pages">
+    <div class="page" data-page="query">
+        <div id="query_box" class="page-content pull-to-refresh-content"  data-distance="100">
+            <div class="pull-to-refresh-layer">
+                <div class="preloader"></div>
+                <div class="pull-to-refresh-arrow"></div>
+            </div>
+            <p class="p-block">提醒：充值成功后,请持校园卡到领款机或圈存设备领款</p>
+            <div  class="list-block media-list">
+            </div>
+        </div>
+    </div>
+</div>

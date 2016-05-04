@@ -1,0 +1,13 @@
+package net.newcapec.campus.h5.manager;
+
+import com.alibaba.fastjson.JSONObject;
+
+import net.newcapec.campus.h5.entity.UserSchoolCardData;
+import net.newcapec.v3.extend.manager.BaseManager;
+
+public interface UserSchoolCardDataManager extends
+		BaseManager<UserSchoolCardData> {
+
+	JSONObject findUserBigData(JSONObject pram);
+
+}

@@ -1,0 +1,9 @@
+package net.newcapec.campus.h5.manager.impl;
+
+import net.newcapec.campus.h5.entity.VoteClass;
+import net.newcapec.campus.h5.manager.VoteClassManager;
+import net.newcapec.v3.extend.manager.BaseManagerImpl;
+
+public class VoteClassManagerImpl extends BaseManagerImpl<VoteClass> implements
+		VoteClassManager {
+}

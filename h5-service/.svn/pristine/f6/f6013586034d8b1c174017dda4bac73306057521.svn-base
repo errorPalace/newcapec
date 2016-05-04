@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- | + -->
+<b:beans xmlns:b="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.newcapec.net/schema/v3"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.newcapec.net/schema/v3 http://www.newcapec.net/schema/v3/newcapec-v3.xsd">
+
+	<v3-db-init stop-on-error="true" description="H5平台">
+		<init-file
+			value="classpath*:/net/newcapec/campus/ifaceserver/h5-setup-db.sql"
+			db-type="mysql" />
+		<test-sql value="SELECT CUSTOMERCODE_ from QUICKACCESS_CUSTOMER"
+			db-type="oracle,derby,mysql" />
+	</v3-db-init>
+	<v3-module-preferences>
+		<v3-module-preference key="ifaceservice.key"
+			type="string" allow-null="false" value="" description="玩校开放平台分配的签名key" />
+		<v3-module-preference key="ifaceservice.flag"
+			type="string" allow-null="false" value="07865D0D5D8C612698BAFE5DE90D57F1"
+			description="玩校开放平台分配的flag" />
+		<v3-module-preference key="ifaceservice.invokeRequstUrl"
+			type="string" allow-null="false"
+			value="http://192.168.157.53:8001/cam_iface/invoke.action"
+			description="接入玩校开放平台的地址" />
+		<v3-module-preference key="ifaceservice.invokeRequstH5Url"
+			type="string" allow-null="false"
+			value="http://192.168.157.53:8001/cam_iface/invoke.action"
+			description="H5后台接入玩校开放平台的地址" />
+		<v3-module-preference key="H5service.redirectURL"
+			type="string" allow-null="false" value="http://www.baidu.com"
+			description="H5重定向地址" />
+		<!--奖品图片路径 -->
+		<v3-module-preference key="h5.prizeImageURL"
+			type="string" allow-null="false" value="/usr/local/java/sources/prizePhoto"
+			description="奖品图片路径" />
+		<!-- redis配置信息 -->
+		<v3-module-preference key="campus.redis.ip" type="string"
+			allow-null="false" value="192.168.0.203" description="reids服务器ip地址"></v3-module-preference>
+		<v3-module-preference key="campus.redis.port"
+			type="number" allow-null="false" value="6379" description="reids服务器端口号"></v3-module-preference>
+		<v3-module-preference key="campus.redis.maxTotal"
+			type="number" allow-null="false" value="100" description="设置最大连接数"></v3-module-preference>
+		<v3-module-preference key="campus.redis.maxWaitMillis"
+			type="number" allow-null="false" value="1000" description="设置最大阻塞时间，记住是毫秒数milliseconds"></v3-module-preference>
+		<v3-module-preference key="campus.redis.maxIdle"
+			type="number" allow-null="false" value="10" description="设置空闲连接"></v3-module-preference>
+		<v3-module-preference key="campus.redis.password"
+			type="string" allow-null="false" value="" description="服务器密码如果没有密码请设置为空字符串"></v3-module-preference>
+		<v3-module-preference key="campus.redis.isOpen"
+			type="boolean" allow-null="false" value="true" description="是否开启reids服务器"></v3-module-preference>
+		<v3-module-preference key="campus.url" type="string"
+			allow-null="false"
+			value="http://192.168.3.63:8080/campus/cam_iface/getWXInfo.action"
+			description="获取玩校的统一身份信息url"></v3-module-preference>
+		<v3-module-preference key="campus.flag" type="string"
+			allow-null="false" value="ncp_annualmeeting" description="标识flag"></v3-module-preference>
+		<v3-module-preference key="campus.key" type="string"
+			allow-null="false" value="5B6191A2793BCE73761F32F11A01FB08"
+			description="签名key"></v3-module-preference>
+
+		<v3-module-preference key="campus.sys.url" type="string"
+			allow-null="false"
+			value="http://server.17wanxiao.com/campus/cam_iface/thirdServiceForSys.action"
+			description="获取玩校的统一身份信息url"></v3-module-preference>
+		<v3-module-preference key="campus.sys.flag" type="string"
+			allow-null="false" value="XXXx" description="标识flag"></v3-module-preference>
+		<v3-module-preference key="campus.sys.key" type="string"
+			allow-null="false" value="XXXX" description="签名key"></v3-module-preference>
+		<v3-module-preference key="campus.schoolCardDiary_ShareURL"
+			type="string" allow-null="false" value="www.baidu.com" description="校园卡日记分享的URL"></v3-module-preference>
+
+		<v3-module-preference key="campus.schoolCardDiary.saveTime"
+			type="number" allow-null="false" value="5" description="校园卡日记计算使用玩笑充值节约的时间"></v3-module-preference>
+
+		<v3-module-preference key="campus.schoolCardDiary.wasteTime"
+			type="number" allow-null="false" value="10" description="校园卡日记计算充值浪费的时间"></v3-module-preference>
+		<!--##################################投票 -->
+		<v3-module-preference key="vote.redirectURL"
+			type="string" allow-null="false" value="http://www.baidu.com"
+			description="携带用户标识重定向投票的地址" />
+
+		<v3-module-preference key="error.redirectURL"
+			type="string" allow-null="false" value="http://www.qq.com"
+			description="token获取个人信息失败重定向的地址" />
+
+
+	<v3-module-preference key="vote.shareURL"
+			type="string" allow-null="false" value="http://www.share.com"
+			description="投票分享地址" />
+       <v3-module-preference key="wx.url"
+           type="string"
+			allow-null="false"
+			value="http://liluo.tunnel.qydev.com/html/v2/useJsapi.action"
+			description="微信获取api的url" />
+		<!-- 学校新闻 -->
+		<v3-module-preference key="campus.news.titleSub" type="number" allow-null="false" value="12" description="学校新闻标题长度（注：每个字符为1个长度）"></v3-module-preference>
+		<v3-module-preference key="campus.news.summarySub" type="number" allow-null="false" value="22" description="学校新闻概略长度（注：每个字符为1个长度）"></v3-module-preference>
+
+       <v3-module-preference key="campus.presys.url" type="string"
+			allow-null="false"
+			value="http://server.17wanxiao.com/campus/cam_iface/invokFrontMethodForSys.action"
+			description="玩校前置接口服务调用url"></v3-module-preference>
+	</v3-module-preferences>
+
+	<v3-resource-definition>
+		<public-urls value="/quickaccess/v1/invoke.action" />
+		<public-urls value="/quickaccess/v1/route.action" />
+		<public-urls value="/h5/**" />
+	</v3-resource-definition>
+
+	<v3-package name="/h5">
+
+		<!-- h5 -->
+		<action name="initPage" ref="recommendFriendRegisterAction" />
+		<action name="getSchoolList" ref="recommendFriendRegisterAction" />
+		<action name="sendCaptchaFromRegister" ref="recommendFriendRegisterAction" />
+		<action name="register" ref="recommendFriendRegisterAction" />
+		<!--节目列表 -->
+		<action name="drawInfo" ref="drawAction" />
+		<action name="redirectURL" ref="recommendFriendRegisterAction" />
+		<!--抽奖 -->
+		<action name="draw" ref="drawAction" />
+		<!--获取中奖人列表/我的中奖列表 -->
+		<action name="winners" ref="drawAction" />
+		<!--投票 -->
+		<action name="programVote" ref="programVoteAction" />
+		<!--节目列表 -->
+		<action name="getProgram" ref="programVoteAction" />
+		
+		<!-- ############################ 校园卡日记 -->
+		<!--根据token获取校园卡日记数据 -->
+		<action name="getMyDataByToken" ref="schoolCardDiaryAction" />
+		<!--根据UUID获取校园卡数据 -->
+		<action name="getMyDataByUuid" ref="schoolCardDiaryAction" />
+		<!--获取校园卡日记分享的URL -->
+		<action name="getShareURL" ref="schoolCardDiaryAction" />
+		<!-- ############################ 投票 -->
+		<!--微信配置入口 -->
+		<action name="entrance" ref="voteAction" />
+		<!--根据获取相关信息 -->
+		<action name="getUserInfo" ref="voteAction" />
+		<!--获取全国列表 -->
+		<action name="getAllSchool" ref="voteAction" />
+		<!--投票 -->
+		<action name="vote" ref="voteAction" />
+		<!--根据costomCode获取班级信息 -->
+		<action name="getClassByCostomCode" ref="voteAction" />
+		<!--获取分享的URL -->
+		<action name="getVoteShareURL" ref="voteAction" />
+        <!--获取微信api -->
+		<action name="getUseJsapi" ref="voteAction" />
+	</v3-package>
+	<!-- ############################ 图书馆 -->
+	
+	 <v3-package name="/h5/library" action-ref="libraryAction">
+		<action name="getLibraryDataByName"/>
+		<action name="getLibraryDataBypinyin"/>
+		<action name="getLibraryDataByAuthor"/>
+		<action name="getUserInfo"/>
+		<action name="getBookInfo"/>
+		<action name="getNowBorrow"/>
+		<action name="getHistoryBorrow"/>
+		<action name="getLibraryUserInfo"/>
+		<action name="execUserLike"/>
+	</v3-package>
+	
+   <v3-package name="/campus/schoolinfo" action-ref="schoolInfoAction">
+		<action name="info">
+			<result name="noinfo" template="h5/schoolinfo/noinfo.ftl" />
+			<result name="schoolinfo" template="h5/schoolinfo/schoolinfo.ftl" />
+			<result name="mapinfo" template="h5/schoolinfo/mapinfo.ftl" />
+			<result name="newsinfo" template="h5/schoolinfo/newsinfo.ftl" />
+			<result name="noticeinfo" template="h5/schoolinfo/noticeinfo.ftl" />
+			<result name="probleminfo" template="h5/schoolinfo/probleminfo.ftl" />
+			<result name="toschoolinfo" template="h5/schoolinfo/toschoolinfo.ftl" />
+			<result name="welcomeinfo" template="h5/schoolinfo/welcomeinfo.ftl" />
+			<result name="floorinfo" template="h5/schoolinfo/floorinfo.ftl" />
+			<result name="imburseinfo" template="h5/schoolinfo/imburseinfo.ftl" />
+			<result name="digestinfo" template="h5/schoolinfo/digestinfo.ftl" />
+		</action>
+		<action name="list" result-success="h5/schoolinfo/list.ftl" />
+		<action name="load" />
+	</v3-package>
+
+	<v3-package name="/customer" action-ref="customerAction">
+		<action name="selectCustomer" />
+		<v3-menu name="customer_manager" title="学校管理" admin="true">
+			<action name="manager" result-success="quickaccess/customer/manager.ftl" />
+			<action name="list" />
+			<v3-group name="customer_view" title="查看" default="true">
+				<action name="view" result-success="quickaccess/customer/view.ftl" />
+			</v3-group>
+			<v3-group name="customer_add" title="添加" default="true">
+				<action name="enterAdd" result-success="quickaccess/customer/add.ftl" />
+				<action name="add" />
+			</v3-group>
+			<v3-group name="customer_edit" title="修改" default="true">
+				<action name="enterEdit" result-success="quickaccess/customer/edit.ftl" />
+				<action name="edit" />
+			</v3-group>
+			<v3-group name="customer_del" title="删除" default="false">
+				<action name="delete" />
+			</v3-group>
+			<v3-group name="customer_init_pinyin" title="初始化拼音">
+				<action name="pinyinInit" />
+			</v3-group>
+			<v3-group name="customer_init_jianpin" title="初始化简拼">
+				<action name="jianpinInit" />
+			</v3-group>
+		</v3-menu>
+	</v3-package>
+
+	<v3-package name="/student" action-ref="studentAction">
+		<v3-menu name="student_manager" title="学生查看" admin="true">
+			<action name="manager" result-success="quickaccess/student/manager.ftl" />
+			<action name="list" />
+			<v3-group name="student_view" title="查看明细" default="true">
+				<action name="view" result-success="quickaccess/student/view.ftl" />
+			</v3-group>
+			<v3-group name="student_del" title="删除" default="false">
+				<action name="delete" />
+			</v3-group>
+		</v3-menu>
+	</v3-package>
+	<v3-package name="/activity" action-ref="activityAction">
+		<v3-menu name="activity_manager" title="活动管理" admin="true">
+			<action name="manager" result-success="h5/activity/manager.ftl" />
+			<action name="list" />
+			<action name="choujiang" />
+			<v3-group name="activity_view" title="查看" default="true">
+				<action name="view" result-success="h5/activity/view.ftl" />
+			</v3-group>
+			<v3-group name="activity_add" title="添加" default="true">
+				<action name="enterAdd" result-success="h5/activity/add.ftl" />
+				<action name="add" />
+			</v3-group>
+			<v3-group name="activity_edit" title="修改" default="true">
+				<action name="enterEdit" result-success="h5/activity/edit.ftl" />
+				<action name="edit" />
+			</v3-group>
+			<v3-group name="activity_del" title="删除" default="false">
+				<action name="delete" />
+			</v3-group>
+			<v3-group name="activity_openuse" title="开放抽奖" default="false">
+				<action name="use" />
+			</v3-group>
+			<v3-group name="activity_closeuse" title="关闭抽奖" default="false">
+				<action name="use" />
+			</v3-group>
+		</v3-menu>
+	</v3-package>
+	<v3-package name="/activityLog" action-ref="activityLogAction">
+		<v3-menu name="activityLog_manager" title="抽奖记录" admin="true">
+			<action name="manager" result-success="h5/activityLog/manager.ftl" />
+			<action name="list" />
+			<v3-group name="activityLog_view" title="查看" default="true">
+				<action name="view" result-success="h5/activityLog/view.ftl" />
+			</v3-group>
+		</v3-menu>
+	</v3-package>
+	<v3-package name="/activityPrizeCfg" action-ref="activityPrizeCfgAction">
+		<v3-menu name="activityPrizeCfg_manager" title="活动预备奖品" admin="true">
+			<action name="manager" result-success="h5/activityPrizeCfg/manager.ftl" />
+			<action name="list" />
+			<v3-group name="activityPrizeCfg_view" title="查看" default="true">
+				<action name="view" result-success="h5/activityPrizeCfg/view.ftl" />
+			</v3-group>
+			<v3-group name="activityPrizeCfg_add" title="添加" default="true">
+				<action name="enterAdd" result-success="h5/activityPrizeCfg/add.ftl" />
+				<action name="add" />
+			</v3-group>
+			<v3-group name="activityPrizeCfg_edit" title="修改" default="true">
+				<action name="enterEdit" result-success="h5/activityPrizeCfg/edit.ftl" />
+				<action name="edit" />
+			</v3-group>
+			<v3-group name="activityPrizeCfg_del" title="删除" default="false">
+				<action name="delete" />
+			</v3-group>
+		</v3-menu>
+	</v3-package>
+	<v3-package name="/prize" action-ref="prizeAction">
+		<v3-menu name="prize_manager" title="奖品管理" admin="true">
+			<action name="manager" result-success="h5/prize/manager.ftl" />
+			<action name="list" />
+			<v3-group name="prize_view" title="查看" default="true">
+				<action name="view" result-success="h5/prize/view.ftl" />
+			</v3-group>
+			<v3-group name="prize_add" title="添加" default="true">
+				<action name="enterAdd" result-success="h5/prize/add.ftl" />
+				<action name="add" />
+			</v3-group>
+			<v3-group name="prize_edit" title="修改" default="true">
+				<action name="enterEdit" result-success="h5/prize/edit.ftl" />
+				<action name="edit" />
+			</v3-group>
+			<v3-group name="prize_del" title="删除" default="false">
+				<action name="delete" />
+			</v3-group>
+		</v3-menu>
+	</v3-package>
+	<v3-package name="/sonActivity" action-ref="sonActivityAction">
+		<v3-menu name="sonActivity_manager" title="子活动管理" admin="true">
+			<action name="manager" result-success="h5/sonActivity/manager.ftl" />
+			<action name="list" />
+			<v3-group name="sonActivity_view" title="查看" default="true">
+				<action name="view" result-success="h5/sonActivity/view.ftl" />
+			</v3-group>
+			<v3-group name="sonActivity_add" title="添加" default="true">
+				<action name="enterAdd" result-success="h5/sonActivity/add.ftl" />
+				<action name="add" />
+			</v3-group>
+			<v3-group name="sonActivity_edit" title="修改" default="true">
+				<action name="enterEdit" result-success="h5/sonActivity/edit.ftl" />
+				<action name="edit" />
+			</v3-group>
+			<v3-group name="sonActivity_del" title="删除" default="false">
+				<action name="delete" />
+			</v3-group>
+		</v3-menu>
+	</v3-package>
+	<v3-package name="/sonActivityPrizeCfg" action-ref="sonActivityPrizeCfgAction">
+		<v3-menu name="sonActivityPrizeCfg_manager" title="子活动奖品派奖"
+			admin="true">
+			<action name="manager" result-success="h5/sonActivityPrizeCfg/manager.ftl" />
+			<action name="list" />
+			<v3-group name="sonActivityPrizeCfg_view" title="查看"
+				default="true">
+				<action name="view" result-success="h5/sonActivityPrizeCfg/view.ftl" />
+			</v3-group>
+			<v3-group name="sonActivityPrizeCfg_add" title="添加" default="true">
+				<action name="enterAdd" result-success="h5/sonActivityPrizeCfg/add.ftl" />
+				<action name="add" />
+			</v3-group>
+			<v3-group name="sonActivityPrizeCfg_edit" title="修改"
+				default="true">
+				<action name="enterEdit" result-success="h5/sonActivityPrizeCfg/edit.ftl" />
+				<action name="edit" />
+			</v3-group>
+			<v3-group name="sonActivityPrizeCfg_del" title="删除" default="false">
+				<action name="delete" />
+			</v3-group>
+		</v3-menu>
+	</v3-package>
+	<v3-package name="/program" action-ref="programAction">
+		<v3-menu name="program_manager" title="节目管理" admin="true">
+			<action name="manager" result-success="h5/program/manager.ftl" />
+			<action name="list" />
+			<v3-group name="program_view" title="查看" default="true">
+				<action name="view" result-success="h5/program/view.ftl" />
+			</v3-group>
+		</v3-menu>
+	</v3-package>
+	<v3-package name="/programVoteLog" action-ref="programVoteLogAction">
+		<v3-menu name="programVoteLog_manager" title="投票记录" admin="true">
+			<action name="manager" result-success="h5/programVoteLog/manager.ftl" />
+			<action name="list" />
+			<v3-group name="programVoteLog_view" title="查看" default="true">
+				<action name="view" result-success="h5/programVoteLog/view.ftl" />
+			</v3-group>
+		</v3-menu>
+	</v3-package>
+	
+		<v3-package name="/voteClass" action-ref="voteAction">
+		<v3-menu name="voteClass_manager" title="投票班级管理" admin="true">
+			<action name="manager" result-success="h5/vote/manager.ftl" />
+			<action name="list" />
+			<v3-group name="importClass" title="导入班级"
+				default="true">
+				<action name="importAllClass" result-success="h5/vote/importAllByType.ftl" />
+				<action name="importAll" />
+			</v3-group>
+		</v3-menu>
+	</v3-package>
+	
+	<v3-hibernate-mapping>
+		<mapping-packages-scan value="net.newcapec.campus.quickaccess.entity" />
+		<mapping-packages-scan value="net.newcapec.campus.h5.entity" />
+	</v3-hibernate-mapping>
+</b:beans>
+

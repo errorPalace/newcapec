@@ -1,0 +1,92 @@
+package net.newcapec.campus.h5.http;
+
+import com.alibaba.fastjson.JSONObject;
+import net.newcapec.campus.quickaccess.utils.HttpRequestUtils;
+import net.newcapec.campus.quickaccess.utils.Pboc3desmac;
+import net.newcapec.campus.quickaccess.utils.PreferenceUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Created by wa on 2016/1/14.
+ */
+public class HttpCampusUtils {
+    protected final transient Logger log= LoggerFactory
+            .getLogger(this.getClass());
+    private PreferenceUtils preferenceUtils;
+
+    /**
+     * 从玩校获取用户信息
+     * @param token
+     * @return
+     */
+    public JSONObject getUserByToken(String token) {
+        JSONObject result = new JSONObject();
+        try {
+            String url = preferenceUtils.getCampusUrl();
+            String flag = preferenceUtils.getCampusFlag();
+            String key = preferenceUtils.getCampusKey();
+
+            Map<String, String> requestData = new HashMap<String, String>();
+
+            requestData.put("token", token);
+            requestData.put("flag", flag);
+            String sign = Pboc3desmac.sign(requestData, key, false);
+            requestData.put("sign", sign);
+
+            long startTime = System.currentTimeMillis();
+
+            String bossInfoStr = HttpRequestUtils.sendHttpRequestForm(url, requestData);
+
+            long endTime = System.currentTimeMillis();
+            log.info("耗时:" + (endTime - startTime));
+
+            JSONObject bossInfoJson = JSONObject.parseObject(bossInfoStr);
+
+            boolean result_ = bossInfoJson.getBooleanValue("result_");
+
+            if (!result_) {
+                log.error("获取用户信息失败, token:" + token);
+                return null;
+            } else {
+                // data内部name String 姓名
+                // data内部stuNo String 学号（可能没有）
+                // data内部userId String 用户唯一标识
+                // data内部isBindEcard boolean true : 绑了卡 false : 没绑卡
+                // data内部sex String 性别
+                // data内部nickname String 昵称
+                // data内部customerId String 学校id
+                // data内部customerCode String 学校编码
+                // data内部customerName String 学校名称
+                // data内部customPic String 头像
+                // data内部userAccount String 头像
+
+                JSONObject dataJson = bossInfoJson.getJSONObject("data");
+                String mobile = dataJson.getString("userAccount");
+                String name = dataJson.getString("name");
+                String userId = dataJson.getString("userId");
+                if(name.equals("游客")){
+                    return null;
+                }
+                result.put("userId", userId);
+                result.put("name", name);
+                result.put("mobile", mobile);
+                return result;
+            }
+        } catch (Exception e) {
+            log.error(null, e);
+            return null;
+        }
+    }
+
+    public PreferenceUtils getPreferenceUtils() {
+        return preferenceUtils;
+    }
+
+    public void setPreferenceUtils(PreferenceUtils preferenceUtils) {
+        this.preferenceUtils = preferenceUtils;
+    }
+}

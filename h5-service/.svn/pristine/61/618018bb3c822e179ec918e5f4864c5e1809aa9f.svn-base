@@ -1,0 +1,56 @@
+
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="left">
+      <a href="#" class="back link">
+         <i class="icon icon-back"></i>
+       </a>
+     </div>
+    <div class="center sliding">校园卡充值</div>
+    <div class="right">
+    </div>
+  </div>
+</div>
+
+<div class="pages">
+    <div data-page="recharge" class="page">
+        <div id="recharge_box" class="page-content">
+                <div class="content-block" style="margin:10px 0;">
+                    <div class="content-block-inner">
+                        <p class='p-normal f16'>绑定卡号/学号<span class="font-right">{{outid}}</span> </p>
+                    </div>
+                </div>
+               
+                 <div class="content-block" style="overflow:hidden;margin: 10px 0;">
+                     <p class="p-normal">充值金额</p>
+                     <ul class="ul-je">
+                        <li>
+                            <a href="javascript:;" data-amount="0.1" class="amount-cur">0.1元</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" data-amount="20">20元</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" data-amount="30">30元</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" data-amount="50">50元</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" data-amount="100">100元</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" data-amount="200">200元</a>
+                        </li>
+                     </ul>                
+                 </div>
+                <p class="p-block">温馨提醒:</p>
+                <p class="p-block">充值成功后,请持校园卡到领款机或圈存设备完成领款~</p>
+
+                <div class="content-block">
+                  <p><a id="pay" href="#" class="button button-fill btn-defaults">立即充值</a></p>
+                </div>
+        </div>
+    </div>
+</div>
+

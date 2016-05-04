@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../css/framework7.ios.min.css"/>
+    <link rel="stylesheet" href="../css/common.css"/>
+    <title>热门八卦</title>
+    <style rel="stylesheet" type="text/css">
+        .mt-50 {
+            margin-top: 50px;
+        }
+
+        .no-border {
+            border: 0;
+        }
+
+        .card-stu {
+            box-shadow: none;
+            margin: 10px 0;
+        }
+
+        .card-stu .card-header {
+            background: #f7f7f7;
+            padding: 10px;
+            display: block;
+        }
+
+        .card-stu .stick {
+            background: url("../img/wx-top.png") #f7f7f7 no-repeat right top;
+            background-size: 15px;
+        }
+
+        .card-stu .avatar {
+            float: left;
+        }
+
+        .avatar img {
+            width: 36px;
+            height: 36px;
+            border-radius: 18px;
+        }
+
+        .card-stu .stu-name {
+            margin-left: 44px;
+            padding-bottom: 5px;
+            font-size: 15px;
+            font-weight: 500;
+            color: #ffa900;
+        }
+
+        .card-stu .stu-school {
+            margin-left: 44px;
+            font-size: 12px;
+            color: #8e8e93;
+        }
+
+        .card-content p {
+            margin: 1em 0;
+            overflow: hidden;
+            line-height: 1.5;
+            word-wrap: break-word;
+        }
+
+        .card-stu .icon-girl {
+            background: url(../img/wx-girl.png) no-repeat;
+            background-size: 65%;
+            width: 14px;
+            height: 14px;
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+        .card-stu .icon-boy {
+            background: url("../img/wx-boy.png") no-repeat;
+            background-size: 65%;
+            width: 14px;
+            height: 14px;
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+        .card-stu ul {
+
+        }
+
+        .card-stu ul li {
+            float: left;
+            width: 26px;
+            text-align: center;
+        }
+
+        .card-stu li img {
+            width: 80%;
+            border-radius: 50%;
+        }
+
+        .card-stu .oper {
+            float: right;
+            text-align: center;
+            position: relative;
+        }
+        .card-stu .oper a{
+            display: inline-block;
+            margin-right: 10px;
+            color: #565c67;
+        }
+
+        .card-stu .oper .love {
+            display: block;
+            margin: 0 auto;
+            width: 15px;
+            height: 15px;
+            background: url("../img/wx-love.png") no-repeat;
+            background-size: 15px;
+        }
+
+        .card-stu .oper .msg {
+            display: block;
+            margin: 0 auto;
+            width: 15px;
+            height: 15px;
+            background: url("../img/wx-msg.png") no-repeat;
+            background-size: 15px;
+        }
+
+        .card-stu .oper p {
+            font-size: 11px;
+        }
+
+        .stu-more {
+            display: block;
+            border: 1px solid #e5e7ed;
+            border-radius: 2px;
+            line-height: 34px;
+            font-size: 14px;
+            color: #565c67;
+            background-color: #fff;
+            text-align: center;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="statusbar-overlay"></div>
+<div class="views">
+    <div class="view view-main">
+        <div class="pages">
+            <div data-page="index" class="page">
+                <div id="stu_cont" class="page-content">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/template7" id="cardListTemplate">
+    <div id="banner" class="download-banner">
+         <a href="http://www.17wanxiao.com/h5download.html" class="linkbox external" target="_blank">
+            <span class="down">立即下载</span>
+            <img src="../img/wx_logo.jpg">
+
+            <div class="text">
+                <p>玩校APP</p>
+            </div>
+        </a>
+    </div>
+    {{#each this}}
+    <div class="card card-stu">
+        <div class="card-header no-border {{isHot hotTop}}">
+            <div class="avatar"><img src="{{icon}}" alt=""/></div>
+            <div class="stu-name">{{name}}</div>
+            <div class="stu-school"><i class="{{sex sex}}"></i>{{schoolName}}<span style="float: right;">{{feedtime time}}</span></div>
+        </div>
+        <div class="card-content">
+            <div class="card-content-inner">
+                <p>{{content}}</p>
+                {{image photosPath photos}}
+            </div>
+        </div>
+        <div class="card-footer">
+            <ul class="">
+                {{avatar likeList.rows}}
+            </ul>
+
+            <div class="oper">
+                <a href="">
+                    <i class="love"></i>
+
+                    <p>{{like}}</p>
+                </a>
+                <a href="">
+                    <i class="msg"></i>
+
+                    <p>{{reply}}</p>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    {{/each}}
+
+    <div style="width: 100%">
+        <a href="http://www.17wanxiao.com/h5download.html" class="stu-more external" target="_blank">下载查看更多热门帖子</a>
+    </div>
+</script>
+<script type="text/javascript" src="../libs_android/framework7.min.js"></script>
+<script type="text/javascript" src="../libs_android/moment.min.js"></script>
+<script type="text/javascript">
+    moment.locale('zh-cn',{
+        relativeTime : {
+            future: "in %s",
+            past:   "%s前",
+            s:  "秒",
+            m:  "分",
+            mm: "%d分",
+            h:  "an时",
+            hh: "%d时",
+            d:  "天",
+            dd: "%d天",
+            M:  "a月",
+            MM: "%d月",
+            y:  "年",
+            yy: "%d年"
+        }
+    });
+    moment.locale('zh-cn');
+
+
+   var myApp = new Framework7({swipePanel:'left',modalButtonOk:'确定',
+        modalButtonCancel:'取消',
+        modalTitle:"",});
+    var mainView = myApp.addView('.view-main');
+
+    var $$ = Dom7, T7 = Template7;
+    myApp.showIndicator();
+
+    var renderTplById = function (tplId, renderData) {
+        var markup = $$("#" + tplId).html();
+        var compiledTemplate = T7.compile(markup);
+        var output = compiledTemplate(renderData);
+        return output;
+    }
+
+    function feedtime(value){
+        return moment(value).fromNow();
+    }
+    T7.registerHelper('feedtime',function(value){
+        return feedtime(value);
+    });
+
+    function _isHot(value){
+        return (value!=0?'stick':'');
+    }
+    T7.registerHelper('isHot',function(value){
+        return _isHot(value);
+    });
+
+
+    function _image(url,photos){
+        var ns = [];
+        if(!!photos){
+            try{
+                ns = JSON.parse(photos);
+            }catch(error){
+                ns=[];
+            }
+        }
+        if(ns.length>0){
+            return '<img src="'+ url+ns[0] +'" alt="" width="60%"/>';
+        }else{
+            return "";
+        }
+    }
+    T7.registerHelper('image',function(url,photos){
+        return _image(url,photos);
+    });
+
+
+
+    function avatar(array){
+        if(!array)return "";
+        var ay = [];
+
+        for(var i=0;i<array.length;i++){
+            var t = [' <li><img src="','','" alt=""/></li>'];
+            if(i>8){
+                t[1] ="../img/wx-more.png";
+                ay.push(t.join(""));
+                break ;
+            }else{
+                t[1] =array[i].icon;
+                ay.push(t.join(""));
+            }
+        }
+        return ay.join("");
+    }
+    T7.registerHelper('avatar',function(value){
+        return avatar(value);
+    });
+
+    function _sex(value){
+        var cla = "";
+        if(value=='男'){
+            cla ="icon-boy";
+        }else{
+            cla ="icon-girl";
+        }
+        return cla;
+    }
+    T7.registerHelper('sex',function(value){
+        return _sex(value);
+    });
+
+
+
+    var hotCard = {
+        init: function () {
+
+            var params = {
+                    pageSize:10,
+                    currPage:1
+                    },that = this;
+
+            this.getStudentCard(params,function(result){
+                that.render(result.rows);
+                that.bindEvent();
+            });
+
+        },
+        getStudentCard: function (params, callback) {
+            $$.ajax({
+                url:'http://192.168.157.53/html/v2/hotShare.action',
+                method: 'POST',
+                data: params,
+                dataType: 'json',
+                timeout:25*1000,
+                success: function(result){
+                    if(result &&  result.rows){
+                        callback(result);
+                    }else{
+                        myApp.alert(result.message_);
+                        myApp.hideIndicator();
+                    }
+                },
+                error: function(xhr,status){
+                    myApp.alert("服务器返回异常:"+xhr.status);
+                    myApp.hideIndicator();
+                }
+            });
+        },
+        render: function (data) {
+            var $all = $$("#stu_cont");
+            var output = renderTplById('cardListTemplate', data);
+
+            $all.html(output);
+            myApp.hideIndicator();
+        },
+        bindEvent: function () {
+            var that = this, $all = $$("#stu_cont");
+
+            var FixedBox = function (el) {
+                this.element = el;
+                this.y = getXY(el).y;
+
+                function getXY(el) {
+                    return document.documentElement.getBoundingClientRect && (function () {//取元素坐标，如元素或其上层元素设置position relative
+                            var pos = el.getBoundingClientRect();
+                            return {
+                                x: pos.left + document.documentElement.scrollLeft,
+                                y: pos.top + document.documentElement.scrollTop
+                            };
+                        })() || (function () {
+                            var _x = 0, _y = 0;
+                            do {
+                                _x += el.offsetLeft;
+                                _y += el.offsetTop;
+                            } while (el = el.offsetParent);
+                            return {x: _x, y: _y};
+                        })();
+                }
+            }
+
+            FixedBox.prototype = {
+                setCss: function (el) {
+                    if(!el){
+                        el = document.body;
+                    }
+                    var windowST = el.scrollTop;
+                    if (windowST > this.y) {
+                        this.element.style.cssText = "position:fixed; top:0px;";
+                    } else {
+                        this.element.style.cssText = "";
+                    }
+                }
+            };
+
+            var banner =new FixedBox(document.getElementById("banner"));
+            $$("#stu_cont").on("scroll", function () {
+                banner.setCss($$("#stu_cont")[0]);
+            });
+
+        }
+
+    };
+
+    hotCard.init();
+
+
+</script>
+</body>
+</html>

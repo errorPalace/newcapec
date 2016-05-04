@@ -1,0 +1,199 @@
+package net.newcapec.campus.h5.http;
+
+import com.alibaba.fastjson.JSONObject;
+
+import net.newcapec.campus.quickaccess.utils.HttpRequestUtils;
+import net.newcapec.campus.quickaccess.utils.Pboc3desmac;
+import net.newcapec.campus.quickaccess.utils.PreferenceUtils;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Created by wa on 2016/1/14.
+ */
+public class HttpCampusUtils {
+	protected final transient Logger log = LoggerFactory.getLogger(this
+			.getClass());
+	private PreferenceUtils preferenceUtils;
+
+	public JSONObject getUseJsapi(String shareURL) {
+		JSONObject result = new JSONObject();
+
+		Map<String, String> requestData = new HashMap<String, String>();
+		requestData.put("url", shareURL);
+		long startTime = System.currentTimeMillis();
+		String url = preferenceUtils.getWXUrl();
+		try {
+			String bossInfoStr = HttpRequestUtils.sendHttpRequestForm(url,
+					requestData);
+			long endTime = System.currentTimeMillis();
+			log.info("耗时:" + (endTime - startTime));
+			return JSONObject.parseObject(bossInfoStr);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+			result.put("result_", false);
+			result.put("code_", 99);
+			result.put("message_", "调取微信接口失败");
+			return result;
+		}
+
+	}
+
+	/**
+	 * 从玩校获取用户信息
+	 * 
+	 * @param token
+	 * @return
+	 */
+	public JSONObject getUserByToken(String token) {
+		JSONObject result = new JSONObject();
+		try {
+			String url = preferenceUtils.getCampusUrl();
+			String flag = preferenceUtils.getCampusFlag();
+			String key = preferenceUtils.getCampusKey();
+
+			Map<String, String> requestData = new HashMap<String, String>();
+
+			requestData.put("token", token);
+			requestData.put("flag", flag);
+			String sign = Pboc3desmac.sign(requestData, key, false);
+			requestData.put("sign", sign);
+
+			long startTime = System.currentTimeMillis();
+
+			String bossInfoStr = HttpRequestUtils.sendHttpRequestForm(url,
+					requestData);
+
+			long endTime = System.currentTimeMillis();
+			log.info("耗时:" + (endTime - startTime));
+
+			JSONObject bossInfoJson = JSONObject.parseObject(bossInfoStr);
+
+			boolean result_ = bossInfoJson.getBooleanValue("result_");
+
+			if (!result_) {
+				log.error("获取用户信息失败, token:" + token);
+				return null;
+			} else {
+				// data内部name String 姓名
+				// data内部stuNo String 学号（可能没有）
+				// data内部userId String 用户唯一标识
+				// data内部isBindEcard boolean true : 绑了卡 false : 没绑卡
+				// data内部sex String 性别
+				// data内部nickname String 昵称
+				// data内部customerId String 学校id
+				// data内部customerCode String 学校编码
+				// data内部customerName String 学校名称
+				// data内部customPic String 头像
+				// data内部userAccount String 头像
+
+				JSONObject dataJson = bossInfoJson.getJSONObject("data");
+				String mobile = dataJson.getString("userAccount");
+				String name = dataJson.getString("name");
+				String userId = dataJson.getString("userId");
+				if (name.equals("游客")) {
+					return null;
+				}
+				result.put("userId", userId);
+				result.put("name", name);
+				result.put("mobile", mobile);
+				return result;
+			}
+		} catch (Exception e) {
+			log.error(null, e);
+			return null;
+		}
+	}
+
+	/**
+	 * 从玩校获取用户信息
+	 * 
+	 * @param token
+	 * @return
+	 */
+	public JSONObject getUserByTokenSys(String token) {
+		JSONObject result = new JSONObject();
+		try {
+			String url = preferenceUtils.getCampusUrlSys();
+			String flag = preferenceUtils.getCampusFlagSys();
+			String key = preferenceUtils.getCampusKeySys();
+
+			Map<String, String> requestData = new HashMap<String, String>();
+
+			requestData.put("service", "userInfo");
+			requestData.put("flag", flag);
+			JSONObject data = new JSONObject();
+			data.put("accountOrId", token);
+			data.put("type", 3);
+
+			requestData.put("data", data.toJSONString());
+			String sign = Pboc3desmac.sign(requestData, key, false);
+			requestData.put("sign", sign);
+
+			long startTime = System.currentTimeMillis();
+
+			String bossInfoStr = HttpRequestUtils.sendHttpRequestForm(url,
+					requestData);
+
+			long endTime = System.currentTimeMillis();
+			log.info("耗时:" + (endTime - startTime));
+
+			JSONObject bossInfoJson = JSONObject.parseObject(bossInfoStr);
+
+			boolean result_ = bossInfoJson.getBooleanValue("result_");
+
+			if (!result_) {
+				log.error("获取用户信息失败, token:" + token);
+				return null;
+			} else {
+				Long userId = bossInfoJson.getLong("userId");
+				String name = bossInfoJson.getString("name");
+				String sex = bossInfoJson.getString("sex");
+				String nickname = bossInfoJson.getString("nickname");
+				String customPic = bossInfoJson.getString("customPic");
+				String outid = bossInfoJson.getString("outid");
+				String mobile = bossInfoJson.getString("mobile");
+				boolean bindEcard = bossInfoJson.getBoolean("bindEcard");
+				boolean bindMobile = bossInfoJson.getBoolean("bindMobile");
+				String customerId = bossInfoJson.getString("customerId");
+				String customerName = bossInfoJson.getString("customerName");
+				String customerCode = bossInfoJson.getString("customerCode");
+				if (name.equals("游客")) {
+					return null;
+				}
+				result.put("userId", userId);
+				result.put("name", name);
+				result.put("sex", sex);
+				result.put("nickname", nickname);
+				result.put("customPic", customPic);
+				result.put("outid", outid);
+				result.put("bindEcard", bindEcard);
+				result.put("customerId", customerId);
+				result.put("customerName", customerName);
+				result.put("customerCode", customerCode);
+				result.put("bindMobile", bindMobile);
+				result.put("mobile", mobile);
+				return result;
+			}
+		} catch (Exception e) {
+			result.put("result_", false);
+			result.put("code_", 99);
+			result.put("message_", "玩校接口调用失败！");
+			return result;
+		}
+	}
+
+	public PreferenceUtils getPreferenceUtils() {
+		return preferenceUtils;
+	}
+
+	public void setPreferenceUtils(PreferenceUtils preferenceUtils) {
+		this.preferenceUtils = preferenceUtils;
+	}
+}

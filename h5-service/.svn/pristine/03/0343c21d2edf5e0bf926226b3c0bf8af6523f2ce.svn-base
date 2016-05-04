@@ -1,0 +1,72 @@
+-- CREATE DATABASE IF NOT EXISTS CAMPUS_QUICKACCESS DEFAULT CHARSET UTF8 COLLATE UTF8_GENERAL_CI;
+
+-- 创建学校表
+drop table if exists IPADDR_LOG_;
+
+    create table IPADDR_LOG_ (
+        ID_ bigint not null,
+        CREATEDATE_ datetime,
+        IPADDR_ varchar(200),
+        primary key (ID_)
+    );
+--创建校园卡日记分享相关表格  
+drop table if exists USER_SCHOOLCARD_DATA_;
+
+CREATE TABLE `USER_SCHOOLCARD_DATA_` (
+`ID_`  bigint NOT NULL AUTO_INCREMENT ,
+`CREATEDATE_`  datetime NULL ,
+
+`USER_ID_`  bigint NULL ,
+`NAME_`  varchar(255) NULL ,
+`NICKNAME_`  varchar(255) NULL ,
+`STUNO_`  varchar(255) NULL ,
+`CUSTOMER_CODE_`  varchar(255) NULL ,
+`CUSTOMER_NAME_`  varchar(255) NULL ,
+`ISBING_ECARD_`  char(15) NULL ,
+`UUID_`  varchar(255) NULL ,
+`SEX_`  varchar(255) NULL ,
+PRIMARY KEY (`ID_`)
+)
+;
+--  投票相关表
+
+
+drop table if exists VOTE_CLASS_;
+
+CREATE TABLE `VOTE_CLASS_` (
+`ID_`  bigint NOT NULL AUTO_INCREMENT ,
+`CLASSNAME_`  varchar(255) NULL ,
+`CUSTOMERCODE_`  varchar(255) NULL ,
+`CUSTOMERNAME_`  varchar(255) NULL ,
+`CREATEDATE_`  datetime,
+`POLL_`  bigint NOT NULL DEFAULT 0 ,
+PRIMARY KEY (`ID_`)
+);
+
+drop table if exists VOTE_SCHOOL_;
+
+CREATE TABLE `VOTE_SCHOOL_` (
+`ID_`  bigint NOT NULL AUTO_INCREMENT ,
+`CUSTOMERCODE_`  varchar(255) NULL ,
+`CUSTOMERNAME_`  varchar(255) NULL ,
+`CREATEDATE_`  datetime,
+`POLL_`  bigint NOT NULL DEFAULT 0 ,
+PRIMARY KEY (`ID_`)
+);
+
+drop table if exists VOTE_USERINFO_;
+
+CREATE TABLE `VOTE_USERINFO_` (
+`ID_`  bigint NOT NULL AUTO_INCREMENT ,
+`USERID_`  bigint NULL ,
+
+`USERNAME_`  varchar(255) NULL ,
+`TYPE_`  char(10) NOT NULL DEFAULT 0 ,
+`UUID_`  varchar(255) NULL ,
+`CLASSID_` bigint NULL ,
+`CREATEDATE_`  datetime,
+`VOTEDATE_`  datetime,
+`CUSTOMERCODE_`  varchar(255) NULL ,
+`CUSTOMERNAME_`  varchar(255) NULL ,
+PRIMARY KEY (`ID_`)
+);

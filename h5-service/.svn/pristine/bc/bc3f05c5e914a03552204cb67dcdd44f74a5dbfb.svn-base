@@ -1,0 +1,49 @@
+
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="left">
+            <a href="#" class="back link">
+                <i class="icon icon-back"></i>
+            </a>
+        </div>
+        <div class="center sliding">充值成功</div>
+        <div class="right">
+        </div>
+    </div>
+</div>
+
+<div class="pages">
+    <div data-page="payWays" class="page">
+        <div class="page-content">
+
+            <section class="tl-container">
+                <div class="timeline-block">
+                    <div class="timeline-img active">
+                        <img src="img/iconfont-dui.svg">
+                    </div>
+                    <div class="timeline-content">
+                        <h4>充值成功</h4>
+                        <p>充值卡号(150817)<br>圈存充值100.00元</p>
+                    </div>
+                </div>
+                <div class="timeline-block">
+                    <div class="timeline-img">
+                        <img src="img/iconfont-rmb.svg">
+                    </div>
+                    <div class="timeline-content">
+                        <h4>领款</h4>
+                        <p>请持校园卡到领款机或圈存设备完成领款</p>
+                    </div>
+                </div>
+
+            </section>
+
+            <p class="p-block">温馨提醒:</p>
+            <p class="f12 p-block">充值成功后，请持校园卡到领款机或圈存设备完成领款,未领款实际到账时间以校园卡管理机构处理为准</p>
+
+            <div class="content-block">
+                <p><a href="#" class="button active color-orange">完成</a></p>
+            </div>
+        </div>
+    </div>
+</div>

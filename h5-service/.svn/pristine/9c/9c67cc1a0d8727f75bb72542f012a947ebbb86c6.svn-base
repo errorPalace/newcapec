@@ -1,0 +1,32 @@
+-- CREATE DATABASE IF NOT EXISTS CAMPUS_QUICKACCESS DEFAULT CHARSET UTF8 COLLATE UTF8_GENERAL_CI;
+
+-- 创建学校表
+drop table if exists IPADDR_LOG_;
+
+    create table IPADDR_LOG_ (
+        ID_ bigint not null,
+        CREATEDATE_ datetime,
+        IPADDR_ varchar(200),
+        primary key (ID_)
+    );
+--创建校园卡日记分享相关表格  
+drop table if exists USER_SCHOOLCARD_DATA_;
+
+CREATE TABLE `USER_SCHOOLCARD_DATA_` (
+`ID_`  bigint NOT NULL AUTO_INCREMENT ,
+`CREATEDATE_`  datetime NULL ,
+
+`USER_ID_`  bigint NULL ,
+`NAME_`  varchar(255) NULL ,
+`NICKNAME_`  varchar(255) NULL ,
+`STUNO_`  varchar(255) NULL ,
+`CUSTOMER_CODE_`  varchar(255) NULL ,
+`CUSTOMER_NAME_`  varchar(255) NULL ,
+`ISBING_ECARD_`  char(15) NULL ,
+`UUID_`  varchar(255) NULL ,
+`SEX_`  varchar(255) NULL ,
+PRIMARY KEY (`ID_`)
+)
+;
+
+
