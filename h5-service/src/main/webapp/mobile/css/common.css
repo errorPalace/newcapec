@@ -1,0 +1,127 @@
+﻿body, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, ol, li, th, td, p, blockquote, pre, form, fieldset, legend, input, button, textarea, hr {
+    margin: 0;
+    padding: 0;
+}
+input, button, select, textarea {
+    outline: none;
+    font-size: 100%;
+}
+a, a:hover {
+    text-decoration: none;
+
+}
+input{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+}
+
+/*************移动版*****************/
+a, img{
+    /* 禁止用户在新窗口打开页面、如何禁止用户保存图片＼复制图片 for iOS */
+    -webkit-touch-callout:none;
+}
+*{
+    /*很多Android 浏览器的 a 链接有边框，这里取消它*/
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/**{
+    /!* 禁止用户选中文字 for iOS *!/
+    -webkit-user-select : none;
+    /!*很多Android 浏览器的 a 链接有边框，这里取消它*!/
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}*/
+
+body, button, input, select, textarea {
+    font: 14px/1.125 "Microsoft Yahei", Arial,Helvetica,sans-serif;
+}
+
+ul,ol{
+    list-style: none;
+}
+
+
+
+
+
+
+
+/***下载banner  start***/
+
+.banner-top{
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+.banner-bottom{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+.download-banner{
+    display: block;
+    width: 100%;
+    height: 50px;
+    z-index: 9999;
+    background: rgba(0,0,0,.6);
+    overflow: hidden;
+}
+.download-banner .linkbox{
+    display: block;
+    width: 100%;
+    overflow: hidden;
+}
+.download-banner img{
+    float: left;
+    height: 34px;
+    margin: 7px 8px 10px 18px;
+    width: 34px;
+    border-radius: 8px;
+}
+.download-banner .text{
+    float: left;
+    line-height: 50px;
+    color: #fff;
+}
+.download-banner .item2{
+    line-height: 17px;
+    font-size: 12px;
+    padding: 9px 0;
+}
+.download-banner .text p {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.download-banner .down{
+    background-color: #ffa900;
+    color: #ffe8e1;
+    float: right;
+    width: 80px;
+    line-height: 50px;
+    text-align: center;
+}
+
+.download-banner .close{
+    position: absolute;
+    left: -20px;
+    top: -20px;
+    display: block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    background: #000;
+    border-radius: 50%;
+    color: #b3b3b3 !important;
+    font-size: 14px;
+    text-align: center;
+    clip: rect(20px,40px,40px,20px);
+}
+.download-banner .close span{
+    position: relative;
+    left: 8px;
+    top: 7px;
+}
+/***下载banner  end***/

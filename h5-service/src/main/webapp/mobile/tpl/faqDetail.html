@@ -1,0 +1,28 @@
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="left">
+            <a href="#" class="back link">
+                <i class="icon icon-back"></i>
+            </a>
+        </div>
+        <div class="center">我的客服</div>
+    </div>
+</div>
+</div>
+<div class="pages">
+    <div class="page" data-page="faqDetail">
+        <div class="page-content">
+            <div class="card">
+                <div class="card-header service-info-title"><i class="icon icon-checked"></i>{{title}}</div>
+                <div class="card-content">
+                    <div class="card-content-inner" style="line-height: 1.8em;text-indent: 0.5em;">{{content}}</div>
+                </div>
+                 {{#if isAndroid}}
+                <div class="card-footer">还没解决你的问题?
+                   <a href='wanxiao://17wanxiao.com?page=chatRoom&iosLaunchType=iosLaunchTypeModal&data={"userId":"66"}' style="color: #007aff;" class="external"><i class="icon"></i>向我提问</a>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>

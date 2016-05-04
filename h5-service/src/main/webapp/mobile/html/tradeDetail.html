@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../css_android/framework7.ios.css"/>
+    <link rel="stylesheet" href="../css_android/framework7.ios.colors.min.css"/>
+    <title>交易明细</title>
+    <style rel="stylesheet" type="text/css">
+        body {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        .hei-100{
+            height: 100%;
+        }
+
+        .no-padding {
+            padding: 0;
+        }
+
+        .m15 {
+            margin: 15px;
+        }
+
+        .mt15 {
+            margin-top: 15px;
+        }
+
+        .mb15 {
+            margin-bottom: 15px;
+        }
+
+        .badge-price{
+            color:#55B91A;
+            font-size: 20px;
+        }
+        .item-subtext{
+            float: right;
+            font-size: 12px;
+        }
+        .orange{
+            color: #ffa900;
+        }
+
+        .border1{
+            border-bottom: 1px solid #E9E8EF
+        }
+    </style>
+</head>
+<body>
+<!-- Status bar overlay for full screen mode (PhoneGap) -->
+<div class="statusbar-overlay"></div>
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <div class="pages">
+            <div data-page="home" class="page navbar-fixed">
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="left"></div>
+                        <div class="center" style="left: 0px;">
+                            <div class="buttons-row" style="width: 250px;">
+                                <a href="#tab1" class="tab-link active button">全部</a>
+                                <a href="#tab2" class="tab-link button">消费</a>
+                                <a href="#tab3" class="tab-link button">充值</a></div>
+                        </div>
+                        <div class="right"></div>
+                    </div>
+                </div>
+                <div class="page-content tabs">
+                    <div id="tab1" class="tab active hei-100">
+                        <div class="pull-to-refresh-content hei-100" data-ptr-distance="80" >
+
+                            <div class="pull-to-refresh-layer">
+                                <div class="preloader"></div>
+                                <div class="pull-to-refresh-arrow"></div>
+                            </div>
+                            <div class="list-block media-list">
+                                <ul>
+                                    <li class="list-group-title border1">6月
+                                        <span class="item-subtext ">共3笔</span>
+                                    </li>
+                                    <li class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title-row">
+                                                <div class="item-title">一卡通充值（微信支付）</div>
+                                                <div class="item-after">
+                                                    <span class="badge-price">+35</span>
+                                                </div>
+                                            </div>
+                                            <div class="item-subtitle">07-21  12:13:13
+                                                <span class="item-subtext orange">等待付款</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title-row">
+                                                <div class="item-title">一卡通充值（微信支付）</div>
+                                                <div class="item-after">
+                                                    <span class="badge-price">+315</span>
+                                                </div>
+                                            </div>
+                                            <div class="item-subtitle">07-26  12:13:13
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title-row">
+                                                <div class="item-title">一卡通充值（微信支付）</div>
+                                                <div class="item-after">
+                                                    <span class="badge-price">+35</span>
+                                                </div>
+                                            </div>
+                                            <div class="item-subtitle">07-28  12:13:13
+                                                <span class="item-subtext orange">等待付款</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li class="list-group-title border1">7月
+                                        <span class="item-subtext ">共3笔</span>
+                                    </li>
+                                    <li class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title-row">
+                                                <div class="item-title">一卡通充值（微信支付）</div>
+                                                <div class="item-after">
+                                                    <span class="badge-price">+35</span>
+                                                </div>
+                                            </div>
+                                            <div class="item-subtitle">07-21  12:13:13
+                                                <span class="item-subtext orange">等待付款</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title-row">
+                                                <div class="item-title">一卡通充值（微信支付）</div>
+                                                <div class="item-after">
+                                                    <span class="badge-price">+315</span>
+                                                </div>
+                                            </div>
+                                            <div class="item-subtitle">07-26  12:13:13
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title-row">
+                                                <div class="item-title">一卡通充值（微信支付）</div>
+                                                <div class="item-after">
+                                                    <span class="badge-price">+35</span>
+                                                </div>
+                                            </div>
+                                            <div class="item-subtitle">07-28  12:13:13
+                                                <span class="item-subtext orange">等待付款</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="list-block media-list">
+                                <ul>
+                                    <li class="list-group-title border1">7月
+                                        <span class="item-subtext ">共3笔</span>
+                                    </li>
+                                    <li class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title-row">
+                                                <div class="item-title">一卡通充值（微信支付）</div>
+                                                <div class="item-after">
+                                                    <span class="badge-price">+35</span>
+                                                </div>
+                                            </div>
+                                            <div class="item-subtitle">07-21  12:13:13
+                                                <span class="item-subtext orange">等待付款</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title-row">
+                                                <div class="item-title">一卡通充值（微信支付）</div>
+                                                <div class="item-after">
+                                                    <span class="badge-price">+315</span>
+                                                </div>
+                                            </div>
+                                            <div class="item-subtitle">07-26  12:13:13
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title-row">
+                                                <div class="item-title">一卡通充值（微信支付）</div>
+                                                <div class="item-after">
+                                                    <span class="badge-price">+35</span>
+                                                </div>
+                                            </div>
+                                            <div class="item-subtitle">07-28  12:13:13
+                                                <span class="item-subtext orange">等待付款</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="list-block media-list">
+                                <ul>
+                                    <li class="list-group-title border1">8月
+                                        <span class="item-subtext ">共3笔</span>
+                                    </li>
+                                    <li class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title-row">
+                                                <div class="item-title">一卡通充值（微信支付）</div>
+                                                <div class="item-after">
+                                                    <span class="badge-price">+35</span>
+                                                </div>
+                                            </div>
+                                            <div class="item-subtitle">07-21  12:13:13
+                                                <span class="item-subtext orange">等待付款</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title-row">
+                                                <div class="item-title">一卡通充值（微信支付）</div>
+                                                <div class="item-after">
+                                                    <span class="badge-price">+315</span>
+                                                </div>
+                                            </div>
+                                            <div class="item-subtitle">07-26  12:13:13
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title-row">
+                                                <div class="item-title">一卡通充值（微信支付）</div>
+                                                <div class="item-after">
+                                                    <span class="badge-price">+35</span>
+                                                </div>
+                                            </div>
+                                            <div class="item-subtitle">07-28  12:13:13
+                                                <span class="item-subtext orange">等待付款</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="list-block media-list">
+                                <ul>
+                                    <li class="list-group-title border1">9月
+                                        <span class="item-subtext ">共3笔</span>
+                                    </li>
+                                    <li class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title-row">
+                                                <div class="item-title">一卡通充值（微信支付）</div>
+                                                <div class="item-after">
+                                                    <span class="badge-price">+35</span>
+                                                </div>
+                                            </div>
+                                            <div class="item-subtitle">07-21  12:13:13
+                                                <span class="item-subtext orange">等待付款</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title-row">
+                                                <div class="item-title">一卡通充值（微信支付）</div>
+                                                <div class="item-after">
+                                                    <span class="badge-price">+315</span>
+                                                </div>
+                                            </div>
+                                            <div class="item-subtitle">07-26  12:13:13
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title-row">
+                                                <div class="item-title">一卡通充值（微信支付）</div>
+                                                <div class="item-after">
+                                                    <span class="badge-price">+35</span>
+                                                </div>
+                                            </div>
+                                            <div class="item-subtitle">07-28  12:13:13
+                                                <span class="item-subtext orange">等待付款</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tab2" class="tab hei-100 ">
+                        <div class="pull-to-refresh-content hei-100" data-ptr-distance="55" >
+                            <div class="pull-to-refresh-layer">
+                                <div class="preloader"></div>
+                                <div class="pull-to-refresh-arrow"></div>
+                            </div>
+                            <div class="list-block media-list">
+                                <ul>
+                                    <li class="list-group-title">七月</li>
+                                    <li class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title-row">
+                                                <div class="item-title">一卡通充值（微信支付）</div>
+                                                <div class="item-after">
+                                                    <span class="badge-price">+35</span>
+                                                </div>
+                                            </div>
+                                            <div class="item-subtitle">07-21  12:13:13
+                                                <span class="item-subtext">等待付款</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="list-block-label">
+                                    <p>Just pull page down to let the magic happen.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tab3" class="tab hei-100">
+                        <div class="content-block">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../libs_android/framework7.js"></script>
+<script type="text/javascript" src="../script/main.js"></script>
+</body>
+</html>

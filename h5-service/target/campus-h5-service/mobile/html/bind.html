@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../css/framework7.ios.min.css"/>
+    <link rel="stylesheet" href="../css/common.css"/>
+    <link rel="stylesheet" href="../css/main.css"/>
+    <title>绑定一卡通帐号</title>
+    <style rel="stylesheet" type="text/css">
+
+        .list-block{
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .list-block .item-title.label{
+            width: 28%;
+        }
+        .p-block{
+            font-size: 14px;
+            color: #999;
+            line-height: 1.3;
+            margin:10px 10px 0px;
+        }
+
+        .select-btn{
+            width: 70px;
+            height: 30px;
+            color: #fff;
+            background-color: #ffa900;
+            text-align: center;
+            position: absolute;
+            top: 7px;
+            border: none;
+            right: 8px;
+            line-height: 30px;
+            font-size: smaller;
+            border-radius: 4px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="statusbar-overlay"></div>
+<div class="views">
+    <div class="view view-main">
+        <div class="pages">
+            <div data-page="index" class="page">
+                <div class="page-content">
+                    <p class="p-block">查询密码默认为身份证后六位,X用0代替</p>
+                    <div   class="list-block">
+                        <ul>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">学校</div>
+                                        <div class="item-input">
+                                            <input type="text" id="school"  name="school"  value=""  placeholder="" style="font-size: 14px;width: 75%;">
+                                            <input type="hidden" id="customId" name="customId" value="">
+                                            <a href="javascript:void(0);"  class="select-btn external" >选择学校</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                           <!--  <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">姓名</div>
+                                        <div class="item-input">
+                                            <input type="text"  id="truename" name="truename" placeholder="填写卡上姓名" style="font-size: 14px">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li> -->
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">学工号</div>
+                                        <div class="item-input">
+                                            <input type="text" id="cardNo" name="cardNo" placeholder="填写学工号" style="font-size: 14px">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">查询密码</div>
+                                        <div class="item-input">
+                                            <input type="password" id="cardpwd" name="cardpwd" value=""
+                                                   placeholder="6位查询密码" style="font-size: 14px">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="content-block">
+                        <p><a href="#" class="button button-fill btn-defaults" >提交</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="school-popup popup">
+    <div class="view navbar-fixed">
+        <div class="page">
+
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <div class="left"></div>
+                    <div class="center">选择学校</div>
+                    <div class="right"><a href="#" class="link close-popup">关闭</a><!-- <a  href="#" class="link orange">确定</a> --></div>
+                </div>
+            </div>
+            <form data-search-list=".list-block-search" data-search-in=".item-title" class="searchbar searchbar-init">
+                <div class="searchbar-input">
+                    <input type="search" placeholder="" ><a href="#" class="searchbar-clear"></a>
+                </div>
+               <!-- <a href="#" class="searchbar-cancel">取消</a>-->
+            </form>
+
+            <!-- Search bar overlay -->
+            <div class="searchbar-overlay"></div>
+
+
+            <div class="page-content">
+
+
+                <!-- This block will be displayed if nothing found -->
+                <div class="content-block searchbar-not-found">
+                    <div class="content-block-inner">暂无该学校....</div>
+                </div>
+
+                <!-- This block will be displayed if anything found, and this list block is used a searbar target -->
+                <div id="schoolList" class="list-block  media-list list-block-search searchbar-found">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/template7" id="schoolListTemplate">
+
+    
+    <div class="list-group" id="{{type}}">
+        <ul>
+              <li class="list-group-title">{{name}}</li>
+              {{#each items}}
+              <li class="item-content" data-customid="{{customId}}" data-customname="{{customName}}">
+                 
+                    <div class="item-media"><img src="{{logo}}" data-logo="{{logo}}" width="44"></div>
+                    <div class="item-inner">
+                      <div class="item-title-row">
+                        <div class="item-title">{{customName}}</div>
+                      </div>
+                      <div class="item-subtitle">{{address}}</div>
+                    </div>
+                 
+             </li>
+             {{/each}}
+        </ul>
+  </div>
+  
+</script>
+<script type="text/javascript" src="../libs_android/framework7.min.js"></script>
+<script type="text/javascript">
+    var myApp = new Framework7({swipePanel:'left',modalButtonOk:'确定',
+        modalButtonCancel:'取消',
+        modalTitle:"",});
+
+    var mainView = myApp.addView('.view-main');
+
+    var $$ = Dom7,T7 = Template7;
+   
+    window.myApp = myApp;
+
+    var renderTplById = function (tplId, renderData) {
+        var markup = $$("#" + tplId).html();
+        var compiledTemplate = T7.compile(markup);
+        var output = compiledTemplate(renderData);
+        return output;
+    }
+
+
+
+    /*var allSchool =[{"address":"河南省郑州市","customId":692,"customName":"-M1.0老版本玩校测试","jianpin":"M10lbbwxcs","logo":"/campus/~/schoollogo/18643b6f-e3f8-483d-92e9-f4cb8d618663.png","orderNum":0,"pinyin":"-M1.0laobanbenwanxiaoceshi","regionCode":"410100","same":true},{"address":"河南省郑州市","customId":690,"customName":"-T3.0老版本玩校测试","jianpin":"T30lbbwxcs","logo":"/campus/~/schoollogo/9649ce47-e9a8-4a4f-908b-9347261c1244.png","orderNum":0,"pinyin":"-T3.0laobanbenwanxiaoceshi","regionCode":"410100","same":true},{"address":"河南省郑州市","customId":685,"customName":"-T3.0新版本玩校测试","jianpin":"T30xbbwxcs","logo":"/campus/~/schoollogo/b9072d61-0a60-4f44-b4ac-fb1ccd1d2fb2.png","orderNum":0,"pinyin":"-T3.0xinbanbenwanxiaoceshi","regionCode":"120113","same":false},{"address":"123","customId":684,"customName":"-T4.5","jianpin":"T45","logo":"/campus/~/schoollogo/d3119423-1e0e-4590-b0f7-162890dd0883.png","orderNum":0,"pinyin":"-T4.5","regionCode":"410100","same":true},{"address":"213","customId":767,"customName":"2015-9-12","jianpin":"2015912","logo":"/campus/~/schoollogo/c4c84c42-4a50-4967-a1ae-6ef1d10f4081.jpg","orderNum":0,"pinyin":"2015-9-12","regionCode":"310000","same":true},{"address":"新开普","customId":686,"customName":"4.0老版本","jianpin":"40lbb","logo":"/campus/~/schoollogo/71ea10e6-a573-4ffe-9a08-d269ab3767ec.jpg","orderNum":0,"pinyin":"4.0laobanben","regionCode":"410100","same":true},{"address":"新开普","customId":688,"customName":"4.0新版本","jianpin":"40xbb","logo":"/campus/~/schoollogo/4167d669-610e-49c2-80fe-186e2fed4821.jpg","orderNum":0,"pinyin":"4.0xinbanben","regionCode":"410100","same":true},{"address":"郑州","customId":691,"customName":"New-M2.0(老)版本","jianpin":"NewM20lbb","logo":"/campus/~/schoollogo/8554052f-3087-4893-9117-e9f458ea7b87.png","orderNum":0,"pinyin":"New-M2.0(lao)banben","regionCode":"410100","same":true},{"address":"新开普大厦","customId":665,"customName":"New-M2.0(新)版本","jianpin":"NewM20xbb","logo":"/campus/~/schoollogo/f46c9712-5155-4057-a664-ef3a5b0b064d.png","orderNum":0,"pinyin":"New-M2.0(xin)banben","regionCode":"410100","same":true},{"address":"郑州市高新区迎春街8号","customId":673,"customName":"New_M1.0(新)玩校测试","jianpin":"New_M10xwxcs","logo":"/campus/~/schoollogo/3a081cda-c42b-4e58-b7ce-9b319fcaa0bd.png","orderNum":0,"pinyin":"New_M1.0(xin)wanxiaoceshi","regionCode":"410100","same":true}];*/
+
+    var defaultCustomId = "${customid}";
+    var defaultCustomName ="${customName}";
+   // var defaultSchool=  ${deplist};
+//nearSchool = ${deplist};
+//    ${data}
+//     ${customid}
+var  bind = {
+        nearSchool:${deplist},
+        allSchool:[],
+        //school:{"message":"定位失败，请选择全部学校","openid":"o63-WwEDz04zP6Dwrn7d9mewgWh0","result":"error"},
+        
+        init:function(){
+            if(this.nearSchool && this.nearSchool.length>0){
+                var param ={
+                    name:'附近学校',
+                    type:'near_school',
+                    items:this.nearSchool
+                };
+                this.rendList(param);
+            }
+           if(defaultCustomId){
+                $$("#customId").val(defaultCustomId);
+                $$("#school").val(defaultCustomName);
+            }
+            this.bindEvent();
+            this.bindSchoolEvt();
+        },
+        bindEvent:function(){
+            var self = this;
+            $$(".button").on('click',function(){
+               var customId = $$("#customId").val().trim(),
+                 //  truename = $$("#truename").val(),
+                   cardNo  = $$("#cardNo").val().trim(),
+                   cardpwd = $$("#cardpwd").val().trim();
+                if(customId=='' || cardNo =='' || cardpwd ==''){
+                    myApp.alert("以上信息均不能为空");
+                    return;
+                }
+                var reg = /^\d{6}$/;
+                if(!reg.test(cardpwd)){
+                    myApp.alert("请填写正确的密码");
+                    return;
+                }
+                self.submit({
+                    openid:"${openid!''}",
+                    customId:customId,
+                    //truename:truename,
+                    password:cardpwd,
+                    outid:cardNo
+                });
+
+            });
+
+
+           $$('.select-btn').on('click',function(){
+                if(self.allSchool && self.allSchool.length>0){
+                    myApp.popup('.school-popup');
+                }else{
+
+                    self.getAllSchoolList(function(data){
+                        self.allSchool = data;
+                        myApp.hideIndicator();
+                        var param ={
+                            name:'全部学校',
+                            type:'all_school',
+                            items:data
+                        };
+                        self.rendList(param,true);
+                    });
+    
+                }
+              
+           });
+
+
+        },
+        bindSchoolEvt:function(){
+
+            $$("#schoolList").on('click','li.item-content',function(){
+                var id = $$(this).data("customid"),
+                    name =$$(this).data("customname");
+
+                  $$("#customId").val(id);
+                  $$("#school").val(name);
+                  
+                   myApp.closeModal('.school-popup');
+            });    
+
+        },
+        rendList:function(data,isShow){
+             var output =renderTplById("schoolListTemplate",data);
+                if($$("#near_school").length>0){
+                    $$("#schoolList").append(output);
+                }else{
+                    $$("#schoolList").html(output);    
+                }
+
+                if(!!isShow)myApp.popup('.school-popup');
+        },
+        getAllSchoolList:function(callback){
+            myApp.showIndicator();
+            var that = this;
+
+            /*callback(allSchool);
+            return;*/
+
+            this.sendRequest({url:"${ctx}/wxhtml/toSelectSchool.${urlExt}?openid=${openid!''}"},callback);
+        },
+        submit:function(param){
+            var self = this;
+            myApp.showIndicator();
+           /* param['unionId']  = this.clientInfo['unionId'] ||'';
+            param['openId']  = this.clientInfo['openId'] ||'';
+            param['userId']  = this.clientInfo['userId'] ||'';
+            param['type']  = this.clientInfo['type'] ||'';*/
+            this.sendRequest({url:"${ctx}/wxhtml/bind.${urlExt}",method:'POST',data:param},
+                function(data){
+                    myApp.hideIndicator();
+                    if(data.result=="success"){
+                        window.location.href ="${ctx}/wxhtml/peopleinfo.${urlExt}?openid="+data.openid;
+                    }else if(data=="error"){
+                        myApp.alert("学工号或查询密码错误!");
+                    }else if(data=="exist"){
+                        window.location.href="${ctx}/wxhtml/peopleinfo.${urlExt}?openid="+data.openid;
+                    }else{
+                        myApp.alert(data.message);
+                    }
+                }
+            );
+        },
+        sendRequest:function(option,callback){
+            var self = this;
+            $$.ajax({
+                url:option.url,
+                method:option.method||'GET',
+                dataType:'json',
+                data:option.data || '',
+                timeout:40*1000,
+                success:function(result){
+                      callback(result);
+                    /*if(result && result.result_ == true){
+                        callback(result);
+                    }else{
+                        myApp.hideIndicator();
+                        myApp.alert(result.message_);
+                    }*/
+                },
+                error:function(xhr,status){
+                    myApp.hideIndicator();
+                    myApp.alert("ERROR:"+status);
+                }
+            });
+        }
+    };
+    bind.init();
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../css/common.css"/>
+    <link rel="stylesheet" href="../css/framework7.ios.min.css"/>
+    <link rel="stylesheet" href="../css/main.css"/>
+    <title>支付</title>
+</head>
+<body>
+
+<div class="views">
+     <div id="mainView"  class="view view-main">
+            <div class="pages">
+                 <div data-page="payWays" class="page">
+                        <div class="page-content" style="display:none;">
+
+                            <section class="tl-container" style="margin-top:0;">
+                                <div class="timeline-block">
+                                    <div class="timeline-img active">
+                                        <img src="../img/iconfont-dui.svg">
+                                    </div>
+                                    <div class="timeline-content">
+                                        <h4>支付成功</h4>
+                                        <p>充值卡号(150817)<br>圈存充值100.00元</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-block">
+                                    <div class="timeline-img">
+                                        <img src="../img/iconfont-rmb.svg">
+                                    </div>
+                                    <div class="timeline-content">
+                                        <h4>领款</h4>
+                                        <p>请持校园卡到领款机或圈存设备完成领款</p>
+                                    </div>
+                                </div>
+
+                            </section>
+
+                            <p class="p-block">温馨提醒:</p>
+                            <p class="f12 p-block">支付成功后，请持校园卡到领款机或圈存设备完成领款,未领款实际到账时间以校园卡管理机构处理为准</p>
+
+                            <div class="content-block">
+                                <p>
+                                    <a href="#" id="close" class="button button-fill btn-defaults external">完成</a>
+
+                                 </p>
+                            </div>
+                        </div>
+
+                        <div class="content-block">
+                            <p><strong style="color:#ff9500;">非常抱歉:</strong></p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;充值失败!</p>
+                        </div>
+                    </div>
+
+            </div>
+     </div>
+</div>
+<script type="text/javascript" src="../libs_android/framework7.min.js"></script>
+<script type="text/javascript">
+     var myApp = new Framework7({swipePanel:'left',modalButtonOk:'确定',
+        modalButtonCancel:'取消',
+        modalTitle:"",});
+
+    var mainView = myApp.addView('.view-main');
+    var $$ = Dom7,T7 = Template7;
+
+        $$("#close").on('click',function(){
+
+           if(window.WeixinJSBridge){
+                WeixinJSBridge.invoke('closeWindow',{},function(res){
+                //alert(res.err_msg);
+                });
+            }else{
+                window.open('','_self','');
+                window.close();
+            }
+
+        });
+</script>
+</body>
+</html>

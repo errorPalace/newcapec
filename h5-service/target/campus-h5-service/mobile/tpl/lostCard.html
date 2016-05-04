@@ -1,0 +1,55 @@
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="left sliding">
+            <a href="#" class="back link">
+                <i class="icon icon-back"></i>
+            </a>
+        </div>
+        <div class="center sliding">卡挂失</div>
+    </div>
+</div>
+<div class="pages">
+    <div class="page" data-page="lostCard">
+        <div id="lostCard_box" class="page-content">
+            <div class="content-block" style="margin:10px 0;">
+                <div class="content-block-inner">
+
+
+                    <p style="color: #999999;">姓名<span style='float:right'>{{name}}</span> </p>
+                    <p style="color: #999999;">学号/卡号<span style='float:right'>{{outid}}</span></p>
+                    <p style="color: #999999;">当前状态<span style='float:right'>正常</span></p>
+
+                </div>
+            </div>
+
+            <div class="list-block" style='margin:10px 0'>
+                <ul>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">密码</div>
+                                <div class="item-input">
+                                    <input type="password" name="password"  placeholder="请填写6位查询密码" style="font-size: 14px">
+                                    <input type="hidden" name="outid" style='font-size:12px' value="{{outid}}">
+                                    <input type="hidden" name="type" style='font-size:12px' value="0">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <p class="p-block">提醒：查询密码默认身份证后六位,X用0代替</p>
+
+            <div class="content-block">
+                <p><a href="#" class="button button-fill color-orange submit_lost">提交</a></p>
+            </div>
+           <!-- <div class="content-block" >
+                <p class='remark font-p'>解除挂失或补新卡，请前往学校校园卡管理中心咨询</p>
+                <p><a href="#" class="back button button-fill color-orange">返回</a></p>
+            </div>-->
+
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.multipart.maxSize" value="1000000000"></constant>
+	<package name="v3-json-default" extends="v3-default">
+		<result-types>
+			<result-type name="json" class="org.apache.struts2.json.JSONResult" />
+		</result-types>
+		<interceptors>
+			<interceptor name="json" class="org.apache.struts2.json.JSONInterceptor" />
+		</interceptors>
+	</package>
+	
+	<package name="quickaccess_v1" namespace="/quickaccess/v1" extends="v3-default">
+		<!-- 定义一个拦截器 --> 
+		<interceptors>
+			<interceptor name="authoritStack"  class="net.newcapec.campus.quickaccess.boot.aop.AuthInterceptor"></interceptor> 
+			<interceptor-stack name="authority">
+			   <interceptor-ref name="defaultStack"></interceptor-ref>
+			   <interceptor-ref name="authoritStack"></interceptor-ref>
+			</interceptor-stack>
+	    </interceptors>
+	    <default-interceptor-ref name="authority"></default-interceptor-ref>
+		<global-results>
+			<result name="error" type="freemarker">/template/quickaccess/error.ftl</result>
+   			<result type="redirect" name="index">/mobile/index.html?outid=${outid}&amp;customerCode=${customerCode}&amp;key=${key}</result>
+   			<result type="redirect" name="bind">/mobile/bind.html?outid=${outid}&amp;customerCode=${customerCode}&amp;customerName=${customerName}&amp;key=${key}</result>
+		</global-results>
+   		<action name="invoke" class="invokeServiceAction" method="invoke">
+   		</action>
+   		<action name="route" class="invokeServiceAction" method="route">
+   		</action>
+   	</package>
+</struts>

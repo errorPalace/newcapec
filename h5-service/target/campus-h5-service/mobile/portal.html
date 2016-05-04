@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="stylesheet" href="css/common.css" />
+<title>登录方式</title>
+<script type="text/javascript">
+	    function is_weixn(){
+	        var ua = navigator.userAgent.toLowerCase();
+	        if(ua.match(/MicroMessenger/i)=="micromessenger") {
+	            return true;
+	        } else {
+	            return false;
+	        }
+	    }
+	    
+	    function refreshPage() {
+			history.go(0); location.reload();window.navigate(location);
+		}
+
+		if(!is_weixn()){
+			self.location="/wxhtml/toError.action";
+		}
+		
+		document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+			WeixinJSBridge.call('hideOptionMenu');
+		});
+		
+		document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+			WeixinJSBridge.call('hideToolbar');
+		});
+</script>
+<script type="text/javascript">
+	function getQueryString(name) {
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+		var r = window.location.search.substr(1).match(reg);
+		if (r != null)
+			return unescape(r[2]);
+		return null;
+	}
+
+	window.onload = function() {
+		document.getElementById("wanxiaoLogin").href = "/wxnewhtml/gotoUrl.action"
+				+ location.search + "&type=1";
+		document.getElementById("weixinLogin").href = "/wxnewhtml/gotoUrl.action"
+				+ location.search + "&type=2";
+	};
+</script>
+<style rel="stylesheet" type="text/css">
+body {
+	background: url("img/bg.png") no-repeat;
+	background-size: cover;
+}
+
+.p-block {
+	font-size: 14px;
+	color: #999;
+	line-height: 1.3;
+	margin: 10px 10px 0px;
+}
+
+.center {
+	margin: 10px;
+	overflow: hidden;
+	border: 1px solid #e2e3e7;
+	border-radius: 5px;
+}
+
+.center ul {
+	width: 100%;
+}
+
+.center ul li {
+	opacity: .8;
+	height: 50px;
+	background-color: #FFF;
+	width: 100%;
+	border-bottom: 1px solid #eef1f5;
+}
+
+.center ul li:last-child {
+	border-bottom: 0px;
+}
+
+.center ul a {
+	text-align: center;
+	display: block;
+	height: 50px;
+	line-height: 50px;
+	position: relative;
+}
+
+.wanxiao {
+	background: url(img/wx_logo.jpg) left center no-repeat;
+	background-size: 30px;
+	padding: 10px 0 10px 35px;
+}
+
+.weixin {
+	background: url(img/iconfont-weixin.svg) left center no-repeat;
+	background-size: 30px;
+	padding: 10px 0 10px 35px;
+}
+</style>
+</head>
+<body>
+	<p class="p-block">请选择登录方式</p>
+	<div class="center">
+		<ul>
+			<li><a id="wanxiaoLogin" href="#"><span class="wanxiao">玩校帐号登录</span></a>
+			</li>
+			<li><a id="weixinLogin" href="#"><span class="weixin">微信授权登录</span></a>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

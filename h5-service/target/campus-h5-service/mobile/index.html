@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="css_android/framework7.ios.min.css"/>
+    <link rel="stylesheet" href="css_android/framework7.ios.colors.min.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <title>校园卡</title>
+</head>
+<body>
+<!-- Status bar overlay for full screen mode (PhoneGap) -->
+<div class="statusbar-overlay"></div>
+<!-- Views -->
+<div class="views">
+    <div id="mainView"  class="view view-main">
+        <div class="navbar navbar-hidden">
+            <div class="navbar-inner">
+                <div class="left">
+                    <a href="#" class="link">
+                       <!-- <i class="icon icon-back"></i>-->
+                    </a>
+                </div>
+                <div class="center">校园卡余额(元)</div>
+                <div class="right">
+                    
+                    <a href="javascript:;" class="link external" id="menu" >
+                        <span style="font-size: 13px;color: #FFBC1D;"></span> 
+                       <i class="icon icon-logout"></i>   
+                    </a>
+                </div>
+            </div>
+        </div>
+
+         <div class="pages navbar-through">
+            <div class="page" data-page="home">
+                <div id="page_home_cont" class="page-content">
+                    <div class="xyk-header">
+                        <div class="xyk-info">--.--</div>
+                        <div class="xyk-link">
+                            <a href="tpl/query.html" id="home_unclaim" style="display: none;">有<span style="color:#78DF4B"></span>元未领取</a>
+                        </div>
+                        <div class="xyk-remark">
+                            （以上金额由于网络原因可能延迟更新）
+                        </div>
+                    </div>
+                    <div class="cardbox"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="bottom-dowmload" style="display:none;">
+    <a class="banner" href="" >
+        <img src="img/wx_logo.jpg">
+        <div class="text">玩校APP 签到送惊喜,惊喜享不停</div>
+        <div class="btn-d">立即下载</div>
+    </a>
+    <a href="" class="close"></a>
+</div>
+<script type="text/javascript" src="libs_android/zepto.min.js"></script>
+<script type="text/javascript" src="libs_android/moment.min.js"></script>
+<script type="text/javascript" src="libs_android/framework7.min.js"></script>
+<!--<script type="text/javascript" src="script/ToGateway.js"></script>-->
+<script type="text/javascript" src="script/tplManager.js"></script>
+<script type="text/javascript" src="script/xykAPI.js?20150925"></script>
+<!--<script type="text/javascript" src="http://121.199.64.71/PayGatewayNew/jspay/ToGateway_ND.js"></script>-->
+<script type="text/javascript" src="script/init.js?20150925"></script>
+
+</body>
+</html>

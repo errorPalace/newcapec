@@ -1,0 +1,155 @@
+package net.newcapec.campus.h5.entity;
+
+import java.io.Serializable;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Table(name = "VOTE_USERINFO_")
+@Entity
+public class VoteUserInfo implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@Column(name = "ID_")
+	private long id;
+
+	@Column(name = "USERID_")
+	private Long userId;
+
+	@Column(name = "USERNAME_")
+	private String userName;
+
+	@Column(name = "TYPE_")
+	private boolean type;
+
+	@Column(name = "UUID_")
+	private String uuid;
+
+	@Column(name = "SHARE_UUID_")
+	private String shareUuid;
+
+	@Column(name = "CLASSID_")
+	private Long classId;
+
+	@Column(name = "CREATEDATE_")
+	private Date createDate;
+
+	@Column(name = "VOTEDATE_")
+	private Date voteDate;
+
+	@Column(name = "CUSTOMERCODE_")
+	private String customerCode;
+
+	@Column(name = "CUSTOMERNAME_")
+	private String customerName;
+
+	@Column(name = "OUTID_")
+	private String outid;
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public boolean isType() {
+		return type;
+	}
+
+	public void setType(boolean type) {
+		this.type = type;
+	}
+
+	public String getUuid() {
+		return uuid;
+	}
+
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
+	}
+
+	public Long getClassId() {
+		return classId;
+	}
+
+	public void setClassId(Long classId) {
+		this.classId = classId;
+	}
+
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+
+	public Date getVoteDate() {
+		return voteDate;
+	}
+
+	public void setVoteDate(Date voteDate) {
+		this.voteDate = voteDate;
+	}
+
+	public String getCustomerCode() {
+		return customerCode;
+	}
+
+	public void setCustomerCode(String customerCode) {
+		this.customerCode = customerCode;
+	}
+
+	public String getCustomerName() {
+		return customerName;
+	}
+
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
+	}
+
+	public String getShareUuid() {
+		return shareUuid;
+	}
+
+	public void setShareUuid(String shareUuid) {
+		this.shareUuid = shareUuid;
+	}
+
+	public String getOutid() {
+		return outid;
+	}
+
+	public void setOutid(String outid) {
+		this.outid = outid;
+	}
+
+
+
+}

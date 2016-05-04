@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Created-By: yangle
+Extension-Name: campus transport
+Implementation-Title: campus中转
+Implementation-Vendor: NEWCAPEC
+Implementation-Vendor-Id: newcapec
+Implementation-Version: 1.5.0-r1-20131112
+Specification-Title: CAMPUS-TRANSPORT
+Module-Level: 
+Specification-Version: 1.0.0
+Specification-Vendor: ZHENGZHOU NEWCAPEC ELECTRONICS CO., LTD.
+Built-By: yangle
+Tool: Bnd-0.0.1
+Build-Jdk: 1.6.0_25

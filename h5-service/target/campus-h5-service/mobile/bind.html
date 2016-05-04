@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+     <link rel="stylesheet" href="css_android/framework7.ios.min.css"/>
+    <link rel="stylesheet" href="css_android/framework7.ios.colors.min.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <script type="text/javascript" src="libs_android/framework7.min.js"></script>
+    <title>绑定一卡通帐号</title>
+    <style rel="stylesheet" type="text/css">
+
+        .list-block{
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .list-block .item-title.label{
+            width: 28%;
+        }
+        .p-block{
+            font-size: 14px;
+            color: #999;
+            line-height: 1.3;
+            margin:10px 10px 0px;
+        }
+
+        .select-btn{
+            width: 70px;
+            height: 30px;
+            color: #fff;
+            background-color: #ffa900;
+            text-align: center;
+            position: absolute;
+            top: 7px;
+            border: none;
+            right: 8px;
+            line-height: 30px;
+            font-size: smaller;
+            border-radius: 4px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="statusbar-overlay"></div>
+<div class="views">
+    <div class="view view-main">
+        <div class="pages">
+            <div data-page="index" class="page">
+                <div class="page-content">
+                    <p class="p-block">查询密码默认为身份证后六位,X用0代替</p>
+                    <div   class="list-block">
+                        <ul>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">学校</div>
+                                        <div class="item-input">
+                                            <input type="text" disabled  name="school"  value=""  placeholder="" style="font-size: 14px;width: 75%;">
+                                            <input type="hidden" id="customerCode" name="customerCode" value="">
+                                            <a href="javascript:void(0);"  class="select-btn external" style="display: none;">选择学校</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">姓名</div>
+                                        <div class="item-input">
+                                            <input type="text"  id="truename" name="truename" placeholder="填写卡上姓名" style="font-size: 14px">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">学号/卡号</div>
+                                        <div class="item-input">
+                                            <input type="text" id="cardNo" name="cardNo" readonly placeholder="填写卡上的学号或卡号" style="font-size: 14px">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">查询密码</div>
+                                        <div class="item-input">
+                                            <input type="password" id="cardpwd" name="cardpwd" value=""
+                                                   placeholder="6位查询密码" style="font-size: 14px">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="content-block">
+                        <p><a href="#" class="button button-fill color-orange" >提交</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="school-popup popup">
+    <div class="view navbar-fixed">
+        <div class="page">
+
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <div class="left"><a href="#" class="link close-popup">关闭</a></div>
+                    <div class="center">选择学校</div>
+                    <div class="right"><a id="sendWeiboBtn" href="#" class="link orange">确定</a></div>
+                </div>
+            </div>
+            <form data-search-list=".list-block-search" data-search-in=".item-title" class="searchbar searchbar-init">
+                <div class="searchbar-input">
+                    <input type="search" placeholder="" ><a href="#" class="searchbar-clear"></a>
+                </div>
+               <!-- <a href="#" class="searchbar-cancel">取消</a>-->
+            </form>
+
+            <!-- Search bar overlay -->
+            <div class="searchbar-overlay"></div>
+
+
+            <div class="page-content">
+
+
+                <!-- This block will be displayed if nothing found -->
+                <div class="content-block searchbar-not-found">
+                    <div class="content-block-inner">啥都没查到....</div>
+                </div>
+
+                <!-- This block will be displayed if anything found, and this list block is used a searbar target -->
+                <div class="list-block list-block-search searchbar-found">
+                    <ul>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">Acura </div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">Audi</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var myApp = new Framework7({swipePanel:'left',modalButtonOk:'确定',
+        modalButtonCancel:'取消',
+        modalTitle:"",});
+
+    var mainView = myApp.addView('.view-main');
+
+    var $$ = Dom7;
+    $$('.select-btn').on('click',function(){
+        myApp.popup('.school-popup');
+    });
+    window.myApp = myApp;
+</script>
+<script type="text/javascript" src="script/base64.js"></script>
+<script type="text/javascript" src="script/bind.js"></script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../css/framework7.ios.css"/>
+    <link rel="stylesheet" href="../css/framework7.ios.colors.min.css"/>
+    <title>捡卡登记</title>
+    <style rel="stylesheet" type="text/css">
+        body{
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        .nopadding{
+            padding: 0;
+        }
+
+        .m15{
+            margin: 15px;
+        }
+
+        .mt15{
+            margin-top: 15px;
+        }
+        .mb15{
+            margin-bottom: 15px;
+        }
+
+        .contact-header{
+            background: #888888;
+            text-align: center;
+            padding:10px;
+        }
+
+        .contact-header .item-phote{
+            margin-bottom: 10px
+        }
+
+        .item-phote img{
+            width: 100px;
+            height: 100px;
+            border-radius: 50px;
+        }
+
+        .contact-header .header-text{
+            font-size: 16px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<!-- Status bar overlay for full screen mode (PhoneGap) -->
+<div class="statusbar-overlay"></div>
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <div class="page-content">
+            <div class="contact-header">
+                <div class="item-phote">
+                    <img src="image/u117.png" alt=""/>
+                </div>
+                <div class="header-text">拾金不昧，是一种美德</div>
+            </div>
+
+            <div class="content-block-title m15">请将你捡到的卡信息填写下来，我们将及时通知失主</div>
+            <div class="list-block">
+                <ul>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">姓名</div>
+                                <div class="item-input">
+                                    <input type="text" placeholder="填写卡上姓名" style="font-size: 14px">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">学号/卡号</div>
+                                <div class="item-input">
+                                    <input type="text" placeholder="填写卡上的学号或卡号" style="font-size: 14px">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">电话</div>
+                                <div class="item-input">
+                                    <input type="text" placeholder="填写你的手机号码，方便对方联系你" style="font-size: 14px">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <p><a href="#" class="button button-fill">提交</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../libs/framework7.js"></script>
+<script type="text/javascript" src="../script/main.js"></script>
+
+</body>
+</html>

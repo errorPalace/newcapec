@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../css/common.css"/>
+    <link rel="stylesheet" href="../css/framework7.ios.min.css"/>
+    <link rel="stylesheet" href="../css/main.css"/>
+    <title>校园卡充值</title>
+    <script src="http://121.199.64.71/PayGatewayNew/jspay/ToGateway.js"></script>
+</head>
+<body>
+
+<div class="views">
+     <div id="mainView"  class="view view-main">
+            <div class="pages">
+                    <div class="page">
+                        <div id="recharge_box" class="page-content">
+                                    <div class="content-block" style="margin:10px 0;">
+                                        <div class="content-block-inner">
+                                            <p class='p-normal f16'>绑定卡号/学号<span class="font-right">150817</span> </p>
+                                        </div>
+                                    </div>
+                                   
+                                      <div class="content-block" style="overflow:hidden;margin: 10px 0;">
+                                         <p class="p-normal">充值金额</p>
+                                         <ul class="ul-je">
+                                            <li>
+                                                <a href="javascript:;" data-amount="0.1" class="amount-cur">0.1元</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;" data-amount="20">20元</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;" data-amount="30">30元</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;" data-amount="50">50元</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;" data-amount="100">100元</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;" data-amount="200">200元</a>
+                                            </li>
+                                         </ul>
+                                           
+                                      </div>
+                                      <p class="p-block">温馨提醒:</p>
+                                      <p class="p-block">充值成功后,请持校园卡到领款机或圈存设备完成领款~</p>
+
+                                      <div class="content-block">
+                                        <p><a id="pay" href="#" class="button button-fill btn-defaults">立即充值</a></p>
+                                      </div>
+                            </div>
+                    </div>
+
+
+            </div>
+     </div>
+</div>
+
+<div class="content-block">
+    <p>该校暂未开通微信支付！</p>
+    <p>请下载<a href="http://www.17wanxiao.com/down.htm" target="_blank" ><strong style="color:#ff9500;">玩校客户端</strong></a>选择其他方式进行充值</p>
+</div>
+
+<script type="text/javascript" src="../libs_android/framework7.min.js"></script>
+<script type="text/javascript">
+     var myApp = new Framework7({swipePanel:'left',modalButtonOk:'确定',
+        modalButtonCancel:'取消',
+        modalTitle:"",});
+
+    var mainView = myApp.addView('.view-main');
+    var $$ = Dom7,T7 = Template7;
+
+
+
+    var container = $$("#recharge_box"),
+        param ={
+                opfare:1,
+                openid:"${openid!''}",
+                payMode:"${gateway.gateway_id}#${gateway.gateway_type}"
+            };
+                
+
+    var $a = $$(container).find('.ul-je a'),
+                clzz = 'amount-cur';
+        $a.on('click',function(e){
+                $a.each(function(i,item){
+                    $$(item).removeClass(clzz);
+                });
+                $$(this).addClass(clzz);
+                param.opfare = $$(this).data("amount");
+        });
+
+        var $btn = $$(container).find('#pay');
+            $btn.on('click',function(e){
+                var reg =/^([1-9][\d]{0,7}|0)(\.[\d]{1,2})?$/;
+                if(!reg.test(param.opfare)){
+                      myApp.alert("充值金额有误!"); 
+                      return;      
+                }
+
+                myApp.showIndicator();   
+                $$.ajax({
+                    url:'${ctx}/wxhtml/payOrder.${urlExt}',
+                    method: 'POST',
+                    data: param,
+                    dataType: 'json',
+                    timeout:60*1000,
+                    success: function(data){
+                        if(data.result=="success"){
+                            PrePayOrder(data.message,"${url}/wxhtml/toPayResult.action");
+                        }else{
+                            myApp.alert(data.message);
+                        }
+                         myApp.hideIndicator();
+                    },
+                    error: function(xhr,status){
+                            myApp.alert("服务器返回异常:"+xhr.status);
+                            myApp.hideIndicator();
+                    }
+                });
+
+            });
+
+</script>
+</body>
+</html>

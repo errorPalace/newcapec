@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration sacn="true" scanPeriod="120" debug="false">
+<!-- <configuration> -->
+	<contextName>ewpp</contextName>    
+	<!-- 项目发布时，为提高运行效率可以去掉stdout -->
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+		<!-- 
+			<pattern>[smsemail]%date{yy-MM-dd hh:mm:ss} %-5level %logger{10}%line - %msg%n</pattern>
+			<Pattern>[smsemail]%d{yy-MM-dd HH:mm:ss}%level%t%(%C{1}.%M(%L\))%msg%n</Pattern>
+		 -->
+		 <!-- 项目开发时使用，提高开发效率 -->
+			<pattern>[wxgzpt]%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36}%line - %msg %n</pattern>
+		 <!-- 项目发布使用下面格式，提高性能 -->
+		 <!-- 
+			<pattern>[smsemail]%date{yy-MM-dd HH:mm:ss} %-5level %logger{10} - %msg%n</pattern>
+		  -->
+		</layout>
+	</appender>
+	<appender name="logfile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>d:/wxgzpt11.log</File>
+		<encoder>
+			<pattern>%d %p [%c] - %m%n</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<maxHistory>5</maxHistory>
+			<FileNamePattern>d:/wxgzpt11.%d{yyyy-MM-dd}.log</FileNamePattern>
+			 <!-- 按时间回滚的同时，按文件大小来回滚 -->  
+             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">  
+                  <maxFileSize>500MB</maxFileSize>  
+             </timeBasedFileNamingAndTriggeringPolicy>  
+		</rollingPolicy>
+		<!-- <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>10240KB</MaxFileSize>
+		</triggeringPolicy> -->
+	</appender>
+	<logger name="ch.qos.logback" level="INFO"/>
+	<logger name="org.springframework" level="INFO"/>
+	<logger name="net.sf.ehcache" level="INFO"/>
+	<logger name="org.apache" level="INFO"/>
+	<logger name="org.quartz" level="INFO"/>
+	<logger name="org.hibernate" level="INFO"/>
+	<logger name="freemarker" level="INFO"/>
+	<logger name="net.newcapec.v3.common" level="INFO"/>
+	<logger name="net.newcapec.v3.core" level="INFO"/>
+	<logger name="net.newcapec.v3.security" level="INFO"/>
+	<logger name="net.newcapec.v3.springsecurity" level="INFO"/>
+	<root level="INFO">
+		<appender-ref ref="stdout"/>
+		<appender-ref ref="logfile"/>
+	</root>
+</configuration>

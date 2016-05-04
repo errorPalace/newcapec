@@ -1,0 +1,71 @@
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="left">
+      <a href="#" class="back link">
+          <i class="icon icon-back"></i>
+       </a>
+     </div>
+    <div class="center sliding">选择支付方式</div>
+    <div class="right">
+    </div>
+  </div>
+</div>
+
+<div class="pages">
+  <div data-page="payWays" class="page">
+                  <div class="page-content" id="payWays_box">
+                          
+                         <div class="content-block" style="margin:10px 0;">
+                              <div class="content-block-inner">
+                                <p class='p-normal f16'>充值金额<span class="font-right">{{currency _amount}}元</span> </p>
+                              </div>
+                         </div>
+                         <!-- <div class="content-block-title"></div> -->
+
+                         <div class="list-block" id="qcBanks">
+
+                              <div class="list-group">
+                                  <ul>
+                                    <li class="list-group-title category-title">签约银行圈存</li>
+                                    {{#each data}}
+                                    <li>
+                                      <a href="#"  class="item-link item-content" data-bankid="{{id}}">
+                                        <!--<div class="item-media"><i class="icon icon-f7"></i></div>-->
+                                        <div class="item-inner"> 
+                                          <div class="item-title">{{bankName}}({{number}})</div>
+                                        </div>
+                                      </a>
+                                    </li>
+                                    {{/each}}
+                                  </ul>
+                              </div>
+                              
+                         </div>
+
+                         <!-- 
+                         <div class="list-block">
+
+                              <div class="list-group">
+                                  <ul>
+                                    <li class="border1 list-group-title">第三方支付</li>
+                                    <li>
+                                          <a href="#" data-template="about" data-context-name="about" class="item-link item-content">
+                                              <div class="item-media"><i class="icon icon-f7"></i></div>
+                                            <div class="item-inner"> 
+                                              <div class="item-title">微信支付</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li><a href="projects.html" class="item-link item-content">
+                                        <div class="item-media"><i class="icon icon-f7"></i></div>
+                                        <div class="item-inner"> 
+                                          <div class="item-title">支付宝</div>
+                                        </div></a></li>
+                                  </ul>
+                              </div>
+                              
+                         </div> -->
+                  </div>
+  </div>
+</div>
+
