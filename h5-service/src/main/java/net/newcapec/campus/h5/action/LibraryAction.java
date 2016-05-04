@@ -33,6 +33,7 @@ public class LibraryAction extends BaseAction {
 		this.httpCampusUtils = httpCampusUtils;
 	}
 
+	
 	// 设置我喜欢的类别
 	public void execUserLike() throws Exception {
 		JSONObject result = new JSONObject();
